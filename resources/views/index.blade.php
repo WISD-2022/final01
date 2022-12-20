@@ -1,4 +1,4 @@
-@extends('layouts.user.master')
+@extends('layouts.master')
 @section('title', 'Clean Blog - Home')
 @section('content')
 <head>
