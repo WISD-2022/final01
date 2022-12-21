@@ -19,7 +19,9 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->name('admin.')->group(function () {
+    #後台首頁
     Route::get('/', [AdminController::class, 'index'])->name("index");
+
     /*Route::get('posts', [AdminPostsController::class, 'index'])->name("posts.index");
     Route::get('posts/create', [AdminPostsController::class, 'create'])->name("posts.create");
     Route::post('posts', [AdminPostsController::class, 'store'])->name("posts.store");
