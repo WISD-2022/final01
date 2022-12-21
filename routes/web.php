@@ -30,6 +30,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('posts/{post}', [AdminPostsController::class, 'destroy'])->name("posts.destroy");*/
 });
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
