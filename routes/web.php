@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\StaffController;
+use App\Http\Controllers\StaffsController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ClassesReserveController;
 /*
