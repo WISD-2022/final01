@@ -58,4 +58,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function reserve(){
+        return $this->hasMany(Reserve::class);
+    }
+
+    public function trades(){
+        return $this->hasMany(Trades::class);
+    }
 }

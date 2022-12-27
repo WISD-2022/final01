@@ -57,6 +57,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
 Route::resource('staffs',StaffController::class);
 Route::resource('classes',ClassesController::class);
 Route::resource('schedules', ScheduleController::class);
