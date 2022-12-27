@@ -27,10 +27,10 @@ Route::prefix('/')->name('/')->group(function (){
     #查看課程
     Route::get('classes/{class}',[ClassesController::class,'index'])->name('classes.index');
     #會員預約課程
-    Route::get('classes/{class}/reserves/create',[ReserveController::class,'create'])->name('classes.reserves.create');
-    Route::post('classes/{class}/reserves',[ReserveController::class],'store')->name('classes.reserves.store');
+    Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
+    Route::post('classes/{class}/reserves',[ClassesReserveController::class],'store')->name('classes.reserves.store');
     #會員取消課程
-    Route::delete('classes/{class}/reserves',[ReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
+    Route::delete('myreserves/{reserve}',[ClassesReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
     #會員查看所有會議紀錄
     Route::get('myreserves',[ReserveController::class,'index'])->name('myreserves.index');
 
