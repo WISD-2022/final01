@@ -19,7 +19,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li class="nav-item"><a  class="nav-link" href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li class="nav-item"><a  class="nav-link" href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out">Logout</i></a></li>
                         </ul>
                     </li>
                 @endif

@@ -15,7 +15,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.dashboard.staffs');
+        return view('admin.layouts.staffs.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.layouts.staffs.create');
     }
 
     /**
@@ -36,7 +36,21 @@ class StaffController extends Controller
      */
     public function store(StoreStaffRequest $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        $staffs=new Staff();
+        $staffs->name=$request->user()->id();
+        $staffs->message=$validated['message'];
+        $staffs->save();
+
+        Chirp::create([
+            'user_id'=> $request->user()->id,
+            'message'=>$validated['message'],
+        ]);
+
+        auth()->user()->chirps()->create($validated);
+        return redirect(route('staffs.index'));
     }
 
     /**
@@ -58,7 +72,7 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        //
+        return view('admin.layouts.staffs.edit');
     }
 
     /**
