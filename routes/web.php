@@ -30,7 +30,7 @@ Route::prefix('/')->name('/')->group(function (){
     Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
     Route::post('classes/{class}/reserves',[ClassesReserveController::class],'store')->name('classes.reserves.store');
     #會員取消課程
-    Route::delete('myreserves/{reserve}',[ClassesReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
+    Route::delete('myreserves/{reserve}',[ReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
     #會員查看所有會議紀錄
     Route::get('myreserves',[ReserveController::class,'index'])->name('myreserves.index');
 
