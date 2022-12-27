@@ -25,7 +25,7 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('admin.layouts.staffs.create');
+        return view('staffs.create');
     }
 
     /**
@@ -36,20 +36,11 @@ class StaffController extends Controller
      */
     public function store(StoreStaffRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
+        $this->validate($request, [
+            'name' => 'required|max:50',//檢驗的規則
+            'introduce'=> 'required'
         ]);
-        $staffs=new Staff();
-        $staffs->name=$request->user()->id();
-        $staffs->message=$validated['message'];
-        $staffs->save();
-
-        Chirp::create([
-            'user_id'=> $request->user()->id,
-            'message'=>$validated['message'],
-        ]);
-
-        auth()->user()->chirps()->create($validated);
+        Staff::create($request->all());
         return redirect(route('staffs.index'));
     }
 
@@ -70,31 +61,36 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function edit(Staff $staff)
+    public function edit(Staff $staffs)
     {
-        return view('admin.layouts.staffs.edit');
+        $data = [
+            'staffs'=>$staffs,
+        ];
+        return view('admin.layouts.staffs.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateStaffRequest  $request
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Staff  $staffs
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStaffRequest $request, Staff $staff)
+    public function update(UpdateStaffRequest $request, Staffs $staffs)
     {
-        //
+        $staffs->update($request->all());
+        return redirect()->route('staffs.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Staff  $staff
+     * @param  \App\Models\Staff  $staffs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Staff $staff)
+    public function destroy(Staff $staffs)
     {
-        //
+        $staffs->delete();
+        return redirect()->route('staffs.index');
     }
 }

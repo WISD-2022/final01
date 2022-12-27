@@ -39,6 +39,7 @@ Route::prefix('/')->name('/')->group(function (){
 Route::prefix('admin')->name('admin.')->group(function () {
     #後台首頁
     Route::get('/', [AdminController::class, 'index'])->name("index");
+
     #老師管理首頁
     Route::get('staffs', [StaffController::class, 'index'])->name("staffs.index");
     #新增老師
@@ -48,7 +49,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('staffs/{staff?}/edit', [StaffController::class, 'edit'])->name("staffs.edit");
     Route::patch('staffs/{staff?}', [StaffController::class, 'update'])->name("staffs.update");
     #刪除老師
-    Route::delete('staffs/{staff?}', [StaffController::class, 'destroy'])->name("staffs.create");
+    Route::delete('staffs/{staff?}', [StaffController::class, 'destroy'])->name("staffs.destroy");
 
     #課程管理
     Route::get('classes', [ClassesController::class, 'index'])->name("classes.index");
