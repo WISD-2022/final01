@@ -15,7 +15,7 @@ class StaffsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.layouts.staffs.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class StaffsController extends Controller
      */
     public function create()
     {
-        //
+        return view('staffs.create');
     }
 
     /**
@@ -36,7 +36,12 @@ class StaffsController extends Controller
      */
     public function store(StoreStaffsRequest $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:50',//檢驗的規則
+            'introduce'=> 'required'
+        ]);
+        Staffs::create($request->all());
+        return redirect(route('staffs.index'));
     }
 
     /**
@@ -58,7 +63,10 @@ class StaffsController extends Controller
      */
     public function edit(Staffs $staffs)
     {
-        //
+        $data = [
+            'staffs'=>$staffs,
+        ];
+        return view('admin.layouts.staffs.edit', $data);
     }
 
     /**
@@ -70,7 +78,8 @@ class StaffsController extends Controller
      */
     public function update(UpdateStaffsRequest $request, Staffs $staffs)
     {
-        //
+        $staffs->update($request->all());
+        return redirect()->route('staffs.index');
     }
 
     /**
@@ -81,6 +90,7 @@ class StaffsController extends Controller
      */
     public function destroy(Staffs $staffs)
     {
-        //
+        $staffs->delete();
+        return redirect()->route('staffs.index');
     }
 }

@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('page-title', 'Dashboard')
+@section('title', '美甲後台')
 
 @section('page-content')
     <div class="container-fluid px-4">
