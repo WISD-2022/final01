@@ -41,8 +41,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('staff',StaffController::class);
-Route::resource('classes',ClassesController::class);
+Route::resource('staffs',\App\Http\Controllers\StaffController::class);
+Route::resource('classes',\App\Http\Controllers\ClassesController::class);
 Route::resource('schedules', ScheduleController::class);
 Route::resource('reserves',ReserveController::class);
 Route::resource('trades',TradesController::class);

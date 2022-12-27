@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Staff extends Model
 {
     use HasFactory;
+
+    public function reserve(){
+        return $this->hasMany(Reserve::class);
+    }
+
+    public function schedule(){
+        return $this->hasMany(Schedule::class);
+    }
 }
