@@ -15,7 +15,7 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.layouts.dashboard.classes');
     }
 
     /**
