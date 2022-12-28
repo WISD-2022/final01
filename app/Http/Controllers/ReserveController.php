@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Reserve;
+use App\Http\Requests\StoreReserveRequest;
+use App\Http\Requests\UpdateReserveRequest;
 
-class OrderController extends Controller
+class ReserveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
+     * @param  \App\Http\Requests\StoreReserveRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrderRequest $request)
+    public function store(StoreReserveRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Reserve $reserve)
     {
         //
     }
@@ -53,10 +53,10 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Reserve $reserve)
     {
         //
     }
@@ -64,11 +64,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $order
+     * @param  \App\Http\Requests\UpdateReserveRequest  $request
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(UpdateReserveRequest $request, Reserve $reserve)
     {
         //
     }
@@ -76,10 +76,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Reserve  $reserve
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Reserve $reserve)
     {
         //
     }

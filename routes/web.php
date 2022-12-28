@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffsController;
+use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\ClassesReserveController;
+use App\Http\Controllers\ReserveController;
+use App\Http\Controllers\TradesController;
+use App\Http\Controllers\ScheduleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +24,46 @@ Route::get('/', function () {
     return  view('index');
 });
 
+Route::prefix('/')->name('/')->group(function (){
+    #查看美甲師
+    Route::get('staffs/{staff}',[StaffsController::class,'index'])->name('staffs.index');
+    #查看課程
+    Route::get('classes/{class}',[ClassesController::class,'index'])->name('classes.index');
+    #會員預約課程
+    Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
+    Route::post('classes/{class}/reserves',[ClassesReserveController::class],'store')->name('classes.reserves.store');
+    #會員取消課程
+    Route::delete('myreserves/{reserve}',[ReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
+    #會員查看所有會議紀錄
+    Route::get('myreserves',[ReserveController::class,'index'])->name('myreserves.index');
+
+});
+
 Route::prefix('admin')->name('admin.')->group(function () {
     #後台首頁
     Route::get('/', [AdminController::class, 'index'])->name("index");
 
+    #老師管理首頁
+    Route::get('staffs', [StaffsController::class, 'index'])->name("staffs.index");
+    #新增老師
+    Route::get('staffs/create', [StaffsController::class, 'create'])->name("staffs.create");
+    Route::post('staffs', [StaffsController::class, 'store'])->name("staffs.store");
+    #修改老師
+    Route::get('staffs/{staff?}/edit', [StaffsController::class, 'edit'])->name("staffs.edit");
+    Route::patch('staffs/{staff?}', [StaffsController::class, 'update'])->name("staffs.update");
+    #刪除老師
+    Route::delete('staffs/{staff?}', [StaffsController::class, 'destroy'])->name("staffs.destroy");
+
+    #課程管理
+    Route::get('classes', [ClassesController::class, 'index'])->name("classes.index");
+    #新增課程
+    Route::get('classes/create',[ClassesController::class,'create'])->name("classes.create");
+    Route::post('classes',[ClassesController::class,'store'])->name('classes.store');
+    #修改課程
+    Route::get('classes/{class}/edit',[ClassesController::class,'edit'])->name('classes.edit');
+    Route::patch('classes/{class}',[ClassesController::class,'update'])->name('classes.update');
+    #刪除課程
+    Route::delete('classes/{class}',[ClassesController::class,'destroy'])->name('classes.destroy');
     /*Route::get('posts', [AdminPostsController::class, 'index'])->name("posts.index");
     Route::get('posts/create', [AdminPostsController::class, 'create'])->name("posts.create");
     Route::post('posts', [AdminPostsController::class, 'store'])->name("posts.store");
@@ -36,7 +78,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', function () {
+        return view('index');
+    })->name('index');
 });
+
+
+Route::resource('staffs',StaffsController::class);
+Route::resource('classes',ClassesController::class);
+Route::resource('schedules', ScheduleController::class);
+Route::resource('reserves',ReserveController::class);
+Route::resource('trades',TradesController::class);
+Route::resource('classes.reserve',ClassesReserveController::class);

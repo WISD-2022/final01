@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Classes extends Model
 {
     use HasFactory;
+
+    public function reserve(){
+        return $this->hasMany(Reserve::class);
+    }
 }
