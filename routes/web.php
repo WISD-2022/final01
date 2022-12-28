@@ -20,11 +20,9 @@ use App\Http\Controllers\ScheduleController;
 |
 */
 
-Route::get('/', function () {
-    return  view('index');
-});
+Route::get('/',[HomeController::class,'index'])->name('index');
 
-Route::prefix('/')->name('/')->group(function (){
+//Route::prefix('/')->name('/')->group(function (){
     #查看美甲師
     Route::get('staffs/{staff}',[StaffsController::class,'index'])->name('staffs.index');
     #查看課程
@@ -37,7 +35,7 @@ Route::prefix('/')->name('/')->group(function (){
     #會員查看所有會議紀錄
     Route::get('myreserves',[ReserveController::class,'index'])->name('myreserves.index');
 
-});
+//});
 
 Route::prefix('admin')->name('admin.')->group(function () {
     #後台首頁
@@ -73,7 +71,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 
-Route::middleware([
+/*Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -81,7 +79,7 @@ Route::middleware([
     Route::get('/', function () {
         return view('index');
     })->name('index');
-});
+});*/
 
 
 Route::resource('staffs',StaffsController::class);

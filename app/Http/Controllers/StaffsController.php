@@ -25,7 +25,8 @@ class StaffsController extends Controller
      */
     public function create()
     {
-        return view('staffs.create');
+
+        return view('admin.layouts.staffs.create');
     }
 
     /**
