@@ -14,6 +14,12 @@
                     </div>
                     課程管理
                 </a>
+                <a class="nav-link" href="{{ route('admin.schedules.index') }}">
+                    <div class="sb-nav-link-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    排班管理
+                </a>
                 <a class="nav-link" href="{{ route('admin.index') }}">
                     <div class="sb-nav-link-icon">
                         <i class="fas fa-tachometer-alt"></i>

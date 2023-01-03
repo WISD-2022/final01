@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -15,7 +16,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('schedules')->get();
+        return view('admin.layouts.schedules.index', ['schedules' => $data]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.layouts.schedules.create');
     }
 
     /**
