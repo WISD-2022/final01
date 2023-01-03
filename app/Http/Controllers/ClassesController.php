@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Http\Requests\StoreClassesRequest;
 use App\Http\Requests\UpdateClassesRequest;
+use Illuminate\Support\Facades\DB;
 
 class ClassesController extends Controller
 {
@@ -15,12 +16,16 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        return view('class.index');
+        $data = DB::table('classes')->get();
+        return view('class.index',['classes' => $data]);
+
     }
 
     public function admin_index()
     {
-        return view('admin.layouts.classes.index');
+        $data = DB::table('classes')->get();
+        return view('admin.layouts.classes.index',['classes' => $data]);
+
     }
     /**
      * Show the form for creating a new resource.
@@ -46,7 +51,7 @@ class ClassesController extends Controller
             'amount'=>$request->amount,
             'time'=>$request->time,
         ]);
-        return view('admin.layouts.classes.index');
+        return redirect()->route('admin.classes.index');
     }
 
     /**
@@ -55,7 +60,7 @@ class ClassesController extends Controller
      * @param  \App\Models\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function show(Classes $classes)
+    public function show(Classes $class)
     {
         //
     }
@@ -66,7 +71,7 @@ class ClassesController extends Controller
      * @param  \App\Models\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classes $classes)
+    public function edit(Classes $class)
     {
         //
     }
@@ -78,7 +83,7 @@ class ClassesController extends Controller
      * @param  \App\Models\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClassesRequest $request, Classes $classes)
+    public function update(UpdateClassesRequest $request, Classes $class)
     {
         //
     }
@@ -89,8 +94,10 @@ class ClassesController extends Controller
      * @param  \App\Models\Classes  $classes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classes $classes)
+    public function destroy(Classes $class)
     {
-        //
+
+        $class->delete();
+        return redirect()->route('admin.classes.index');
     }
 }
