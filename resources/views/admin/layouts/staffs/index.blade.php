@@ -19,6 +19,6 @@
                     </thead>
             </tbody>
         </table>
-                <a class="btn btn-success btn-sm" href="{{ route('staffs.create') }}">新增美甲老師</a>
+                <a class="btn btn-success btn-sm" href="{{ route('admin.staffs.create') }}">新增美甲老師</a>
     </div>
 @endsection

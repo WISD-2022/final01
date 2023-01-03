@@ -6,7 +6,7 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">新增美甲老師</li>
         </ol>
-        <form action="{{ route('staffs.store') }}" method="POST" role="form">
+        <form action="{{ route('admin.staffs.store') }}" method="POST" role="form">
             @csrf
             <div class="from-group">
                 <label for="title" class="form-label">老師名字： </label>

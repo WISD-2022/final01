@@ -25,7 +25,6 @@ class StaffsController extends Controller
      */
     public function create()
     {
-
         return view('admin.layouts.staffs.create');
     }
 
@@ -37,12 +36,12 @@ class StaffsController extends Controller
      */
     public function store(StoreStaffsRequest $request)
     {
-        $this->validate($request, [
+        /*$this->validate($request, [
             'name' => 'required|max:50',//檢驗的規則
             'introduce'=> 'required'
-        ]);
+        ]);*/
         Staffs::create($request->all());
-        return redirect(route('staffs.index'));
+        return redirect()->route('admin.layout.staffs.index');
     }
 
     /**
