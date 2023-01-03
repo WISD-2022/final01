@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Staffs;
 use App\Http\Requests\StoreStaffsRequest;
 use App\Http\Requests\UpdateStaffsRequest;
-use Illuminate\Support\Facades\DB;
 
 class StaffsController extends Controller
 {
@@ -37,12 +36,21 @@ class StaffsController extends Controller
      */
     public function store(StoreStaffsRequest $request)
     {
-        DB::table('staffs')->insert([
-            'name'=>$_POST['name'],
-            'introduce'=>$_POST['introduce']]);
+        Staffs::create([
+            'name'=>$request->name,
+            'introduce'=>$request->introduce,
+            'img_path'=>$request->img_path,
+        ]);
+        /*if($request->has('image')) {
+            //影像圖檔-自訂檔案名稱
+            $imageName = $request->id.'_'.time().'.'.$request->img_path->extension();
+            //把檔案存到公開的資料夾
+            $file_path = $request->image->move(public_path('images'), $imageName);
 
-        return redirect()->route('admin.layouts.staffs.index');
+        }*/
+        return view('admin.layouts.staffs.index');
     }
+
 
     /**
      * Display the specified resource.
