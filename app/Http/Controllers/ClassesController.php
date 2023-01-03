@@ -15,9 +15,13 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.classes.index');
+        return view('class.index');
     }
 
+    public function admin_index()
+    {
+        return view('admin.layouts.classes.index');
+    }
     /**
      * Show the form for creating a new resource.
      *

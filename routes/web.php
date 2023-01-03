@@ -53,7 +53,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('staffs/{staff?}', [StaffsController::class, 'destroy'])->name("staffs.destroy");
 
     #課程管理
-    Route::get('classes', [ClassesController::class, 'index'])->name("classes.index");
+    Route::get('classes', [ClassesController::class, 'admin_index'])->name("classes.index");
     #新增課程
     Route::get('classes/create',[ClassesController::class,'create'])->name("classes.create");
     Route::post('classes',[ClassesController::class,'store'])->name('classes.store');

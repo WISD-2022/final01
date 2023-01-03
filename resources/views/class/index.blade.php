@@ -4,48 +4,55 @@
 
 @section('page-content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">課程介紹</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">課程一覽表</li>
-        </ol>
-        <div class="alert alert-success alert-dismissible" role="alert" id="liveAlert">
-            <strong>完成！</strong> 預約成功
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <h1 class="mt-4">課程管理</h1>
+        <!--<ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">主控台</li>
+        </ol>-->
+        <!-- 今日預約的表格 -->
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            所有課程
         </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="btn btn-success btn-sm" href="{{ route('admin.posts.create') }}">新增</a>
-        </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <!--<th scope="col">標題</th>-->
-                <th scope="col" style="text-align: left">標題</th>
-                <th scope="col" style="text-align: right">精選?</th>
-                <th scope="col">功能</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- $posts資料表取單一個* -->
-            @foreach($posts as $post)
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
                 <tr>
-                    <td style="text-align: right">{{$post->id}}</td>
-                    <td>{{$post->title}}</td>
-                    <td style="text-align: right">{{($post->is_feature)? 'v' : 'x'}}</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="{{route('admin.posts.edit', $post->id)}}">編輯</a>
-                        /
-                        <form action="{{route('admin.posts.destroy', $post->id)}}" method="POST" style="display: inline-block">
-                            {{method_field('DELETE')}}
-                            {{csrf_field()}}
-                            <button class="btn btn-sm btn-danger" type="submit">刪除</button>
-                        </form>
-
-                    </td>
+                    <th>課程名稱</th>
+                    <th>課程內容</th>
+                    <th>金額</th>
+                    <th>操作</th>
 
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th></th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>
+                        <a class="btn btn-secondary" href="">預約</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>
+                        <a class="btn btn-secondary" href="">預約</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
