@@ -38,7 +38,14 @@ class ScheduleController extends Controller
      */
     public function store(StoreScheduleRequest $request)
     {
-        //
+        Schedule::create([
+            'ter_id'=>$request->name,
+            'intro'=>$request->intro,
+            'amount'=>$request->amount,
+            'time'=>$request->time,
+        ]);
+        return view('admin.layouts.classes.index');
+        return view('admin.layouts.schedules.index', ['schedules' => $data]);
     }
 
     /**
