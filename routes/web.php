@@ -53,6 +53,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     #刪除老師
     Route::delete('staffs/{staff?}', [StaffsController::class, 'destroy'])->name("staffs.destroy");
 
+    #排班首頁
+    Route::get('schedules', [ScheduleController::class, 'index'])->name("schedules.index");
+    #新增排班
+    Route::get('schedules/create', [ScheduleController::class, 'create'])->name("schedules.create");
+    Route::post('schedules', [ScheduleController::class, 'store'])->name("schedules.store");
+    #修改排班
+    Route::get('schedules/{schedules?}/edit', [ScheduleController::class, 'edit'])->name("schedules.edit");
+    Route::patch('schedules/{schedules?}', [ScheduleController::class, 'update'])->name("schedules.update");
+    #刪除排班
+    Route::delete('schedules/{schedules?}', [StaffsController::class, 'destroy'])->name("schedules.destroy");
+
     #課程管理
     Route::get('classes', [ClassesController::class, 'admin_index'])->name("classes.index");
     #新增課程

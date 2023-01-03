@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Staffs;
 use App\Http\Requests\StoreStaffsRequest;
 use App\Http\Requests\UpdateStaffsRequest;
+use Illuminate\Support\Facades\DB;
 
 class StaffsController extends Controller
 {
@@ -36,12 +37,11 @@ class StaffsController extends Controller
      */
     public function store(StoreStaffsRequest $request)
     {
-        /*$this->validate($request, [
-            'name' => 'required|max:50',//檢驗的規則
-            'introduce'=> 'required'
-        ]);*/
-        Staffs::create($request->all());
-        return redirect()->route('admin.layout.staffs.index');
+        DB::table('staffs')->insert([
+            'name'=>$_POST['name'],
+            'introduce'=>$_POST['introduce']]);
+
+        return redirect()->route('admin.layouts.staffs.index');
     }
 
     /**
