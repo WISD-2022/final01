@@ -9,6 +9,7 @@ use App\Http\Controllers\ClassesReserveController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\TradesController;
 use App\Http\Controllers\ScheduleController;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

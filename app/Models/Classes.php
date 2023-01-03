@@ -12,4 +12,12 @@ class Classes extends Model
     public function reserve(){
         return $this->hasMany(Reserve::class);
     }
+
+    protected $fillable = [
+        'id',
+        'name',
+        'intro',
+        'amount',
+        'time',
+    ];
 }

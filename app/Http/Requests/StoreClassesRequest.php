@@ -13,7 +13,8 @@ class StoreClassesRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        //設為true，才能接收form內容
+        return true;
     }
 
     /**

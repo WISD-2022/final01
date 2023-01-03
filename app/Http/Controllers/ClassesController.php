@@ -29,7 +29,7 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.layouts.classes.create');
     }
 
     /**
@@ -40,7 +40,13 @@ class ClassesController extends Controller
      */
     public function store(StoreClassesRequest $request)
     {
-        //
+        Classes::create([
+            'name'=>$request->name,
+            'intro'=>$request->intro,
+            'amount'=>$request->amount,
+            'time'=>$request->time,
+        ]);
+        return view('admin.layouts.classes.index');
     }
 
     /**

@@ -23,7 +23,7 @@
             </thead>
         </table>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a class="btn btn-success btn-sm" href="{{ route('admin.classes.create') }}">新增</a>
+            <a class="btn btn-success btn-sm" style="" href="{{ route('admin.classes.create') }}">新增課程</a>
         </div>
     </div>
 @endsection
