@@ -57,7 +57,7 @@ class ClassesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Classes  $classes
+     * @param  \App\Models\Classes  $class
      * @return \Illuminate\Http\Response
      */
     public function show(Classes $class)
@@ -68,12 +68,13 @@ class ClassesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Classes  $classes
+     * @param  \App\Models\Classes  $class
      * @return \Illuminate\Http\Response
      */
     public function edit(Classes $class)
     {
-        //
+        $data = DB::table('classes')->where('id',$class->id)->get();
+        return view('admin.layouts.classes.edit',['classes' => $data]);
     }
 
     /**
@@ -91,7 +92,7 @@ class ClassesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Classes  $classes
+     * @param  \App\Models\Classes  $class
      * @return \Illuminate\Http\Response
      */
     public function destroy(Classes $class)

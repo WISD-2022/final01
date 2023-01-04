@@ -1,58 +1,39 @@
 @extends('layouts.master')
-
-@section('page-title', '課程介紹')
-
+@section('title', '課程瀏覽')
 @section('page-content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">課程管理</h1>
-        <!--<ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">主控台</li>
-        </ol>-->
-        <!-- 今日預約的表格 -->
-    </div>
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            所有課程
-        </div>
-        <div class="card-body">
-            <table id="datatablesSimple">
-                <thead>
+        <h1 class="mt-4">課程瀏覽</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">課程一覽表</li>
+        </ol>
+        <table class="table">
+            <thead>
+            <tr>
+                <!--<th scope="col">標題</th>-->
+                <th scope="col" style="text-align: left;width: 10%">課程</th>
+                <th scope="col" style="text-align: left">內容</th>
+                <th scope="col" style="text-align: left">時間</th>
+                <th scope="col" style="text-align: right;width: 10%" >金額</th>
+                <th scope="col" style="text-align: right;width: 10%">功能</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($classes as $classes)
                 <tr>
-                    <th>課程名稱</th>
-                    <th>課程內容</th>
-                    <th>金額</th>
-                    <th>操作</th>
-
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th></th>
-                </tr>
-                </tfoot>
-                <tbody>
-                <tr>
-                    <td>Tiger Nixon</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>
-                        <a class="btn btn-secondary" href="">預約</a>
+                    <!--<th scope="col">標題</th>-->
+                    <td style="text-align: left">{{$classes->name}}</td>
+                    <td style="text-align: left">{{$classes->intro}}</td>
+                    <td style="text-align: left;width: 10%">{{$classes->time}}</td>
+                    <td style="text-align: right;width: 10%">$NT.{{$classes->amount}}</td>
+                    <td style="text-align: right;width: 10%">
+                        <form action="{{ route('classes.reserves.create',$classes->id) }}" method="GET">
+                            @csrf
+                            <button class="btn btn-secondary">預約</button>
+                        </form>
                     </td>
                 </tr>
-                <tr>
-                    <td>Garrett Winters</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>
-                        <a class="btn btn-secondary" href="">預約</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection
