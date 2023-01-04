@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Schedule;
+use App\Models\Staffs;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,8 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('admin.layouts.schedules.create');
+        $data = DB::table('staffs')->get();
+        return view('admin.layouts.schedules.create', ['schedules' => $data]);
     }
 
     /**
@@ -38,14 +40,14 @@ class ScheduleController extends Controller
      */
     public function store(StoreScheduleRequest $request)
     {
+        $ter_id = Staffs::where('name',$request->staffselect)->get();
         Schedule::create([
-            'ter_id'=>$request->name,
-            'intro'=>$request->intro,
-            'amount'=>$request->amount,
-            'time'=>$request->time,
+            'ter_id'=>$request->staffselect,
+            'week'=>$request->week,
+            'str_time'=>$request->str_time,
+            'end_time'=>$request->end_time,
         ]);
-        return view('admin.layouts.classes.index');
-        return view('admin.layouts.schedules.index', ['schedules' => $data]);
+        return view('admin.layouts.schedules.index');
     }
 
     /**

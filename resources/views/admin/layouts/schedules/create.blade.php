@@ -4,20 +4,30 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">排班管理</h1>
         <br>
-        <form action="{{ route('admin.schedules.store') }}" method="POST" role="form">
+        <form action="{{ route('admin.schedules.store') }}" method="POST">
             @csrf
             <div class="from-group">
+{{--                @dd($schedules[0]->id)--}}
                 <label class="form-label">選擇老師: </label>
-                <form  name="staffselect"  method="GET">
+                    <select id='staffselect' name="staffselect">
 
-                    <select  name="staffs">
-                        <option value="1">老師1</option>
-                        <option value="2">老師2</option>
+                    @foreach($schedules as $key=>$schedule)<!--$key 表示$schedule 陣列索引-->
+                        <option value="{!!$key!!}">{{$schedule->name}}</option>
+                    @endforeach
                     </select>
-                </form>
-                <p></p>
+                <br>
+                <label class="form-label">選擇星期: </label>
+                    <select name="week">
+                        <option value="一">一</option>
+                        <option value="二">二</option>
+                        <option value="三">三</option>
+                        <option value="四">四</option>
+                        <option value="五">五</option>
+                        <option value="六">六</option>
+                        <option value="日">日</option>
+                    </select>
+                <br>
                 <label class="form-label">選擇上班時間: </label>
-                <form  name="str_time"  method="GET">
                     <select  name="str_time">
                         <option value="10:00:00">10:00</option>
                         <option value="11:00:00">11:00</option>
@@ -32,10 +42,8 @@
                         <option value="20:00:00">20:00</option>
                         <option value="21:00:00">21:00</option>
                     </select>
-                </form>
                 <br>
                 <label class="form-label">選擇下班時間: </label>
-                <form  name="end_time"  method="GET">
                     <select  name="end_time">
                         <option value="10:00:00">10:00</option>
                         <option value="11:00:00">11:00</option>
@@ -50,16 +58,11 @@
                         <option value="20:00:00">20:00</option>
                         <option value="21:00:00">21:00</option>
                     </select>
-                </form>
 
             </div>
                 <p></p>
                 <button class="btn btn-primary btn-sm" type="submit">儲存</button>
         </form>
-    </div>
-        </form>
-
-
     </div>
 @endsection
 
