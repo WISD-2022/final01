@@ -4,10 +4,8 @@
 
 @section('page-content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">課程管理</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">課程一覽表</li>
-        </ol>
+
+        <h1 class="mt-4">預約紀錄</h1>
         <table class="table">
             <thead>
             <tr>
@@ -36,7 +34,6 @@
                             @csrf
                             {{method_field('DELETE')}}
                             {{csrf_field()}}
-                            <button class="btn btn-danger">刪除</button>
                         </form>
                     </td>
                 </tr>
