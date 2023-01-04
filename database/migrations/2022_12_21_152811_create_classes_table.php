@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('intro');
             $table->integer('amount');
             $table->time('time');
+            $table->timestamps();
         });
     }
 

@@ -73,7 +73,7 @@ class ClassesController extends Controller
      */
     public function edit(Classes $class)
     {
-        $data = DB::table('classes')->where('id',$class->id)->get();
+        $data = DB::table('classes')->where('id',$class)->get();
         return view('admin.layouts.classes.edit',['classes' => $data]);
     }
 
