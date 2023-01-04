@@ -40,7 +40,7 @@
                     <td>System Architect</td>
                     <td>Edinburgh</td>
                     <td>
-                        <a class="btn btn-secondary" href="">預約</a>
+                        <a class="btn btn-secondary" href="{{route('classes.reserves.create')}}">預約</a>
                     </td>
                 </tr>
                 <tr>

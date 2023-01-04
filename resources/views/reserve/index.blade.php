@@ -3,11 +3,12 @@
 @section('page-title', '預約表')
 
 @section('page-content')
-    <div class="container-fluid px-4">
+    <p>pppppppppp</p>
+    <!--   <div class="container-fluid px-4">
         <h1 class="mt-4">預約課程</h1>
-       <!-- <ol class="breadcrumb mb-4">
+        <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">課程一覽表</li>
-        </ol>-->
+        </ol>
         <div class="alert alert-success alert-dismissible" role="alert" id="liveAlert">
             <strong>完成！</strong> 預約成功
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -18,13 +19,13 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <!--<th scope="col">標題</th>-->
+                <th scope="col">#</th>-->
+                <!--<th scope="col">標題</th>
                 <th scope="col" style="text-align: left">標題</th>
                 <th scope="col" style="text-align: right">精選?</th>
                 <th scope="col">功能</th>
             </tr>
-            </thead>
+            </thead>-->
             <!-- <tbody>
              $posts資料表取單一個*
             @foreach($posts as $post)
@@ -45,7 +46,7 @@
 
                 </tr>
             @endforeach
-            </tbody>-->
+            </tbody>
         </table>
-    </div>
+    </div>-->
 @endsection
