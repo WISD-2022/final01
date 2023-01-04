@@ -52,10 +52,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('flight/file', [FlightController::class, 'file'])->name("flight.file");
     Route::post('flight/upload', [FlightController::class, 'upload'])->name("flight.upload");
     #修改老師
-    Route::get('staffs/{staff?}/edit', [StaffsController::class, 'edit'])->name("staffs.edit");
-    Route::patch('staffs/{staff?}', [StaffsController::class, 'update'])->name("staffs.update");
+    Route::get('staffs/{staff}/edit', [StaffsController::class, 'edit'])->name("staffs.edit");
+    Route::patch('staffs/{staff}', [StaffsController::class, 'update'])->name("staffs.update");
     #刪除老師
-    Route::delete('staffs/{staff?}', [StaffsController::class, 'destroy'])->name("staffs.destroy");
+    Route::delete('staffs/{staff}', [StaffsController::class, 'destroy'])->name("staffs.destroy");
 
     #排班首頁
     Route::get('schedules', [ScheduleController::class, 'index'])->name("schedules.index");
@@ -63,10 +63,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('schedules/create', [ScheduleController::class, 'create'])->name("schedules.create");
     Route::post('schedules', [ScheduleController::class, 'store'])->name("schedules.store");
     #修改排班
-    Route::get('schedules/{schedules?}/edit', [ScheduleController::class, 'edit'])->name("schedules.edit");
-    Route::patch('schedules/{schedules?}', [ScheduleController::class, 'update'])->name("schedules.update");
+    Route::get('schedules/{schedule}/edit', [ScheduleController::class, 'edit'])->name("schedules.edit");
+    Route::patch('schedules/{schedule}', [ScheduleController::class, 'update'])->name("schedules.update");
     #刪除排班
-    Route::delete('schedules/{schedules?}', [StaffsController::class, 'destroy'])->name("schedules.destroy");
+    Route::delete('schedules/{schedule}', [StaffsController::class, 'destroy'])->name("schedules.destroy");
 
     #課程管理
     Route::get('classes', [ClassesController::class, 'admin_index'])->name("classes.index");

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedbigInteger('ter_id');
             $table->foreign('ter_id')->references('id')->on('staffs')->onDelete('cascade')->onUpdate('cascade');
-            $table->date('date');
+            $table->text('week');
             $table->time('str_time');
             $table->time('end_time');
             $table->timestamps();

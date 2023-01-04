@@ -4,12 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Staffs;
 
 class Schedule extends Model
 {
     use HasFactory;
 
     public function  staff(){
-        return $this->belongsTo(Staff::class);
+        return $this->belongsTo(Staffs::class);
     }
+    protected $fillable = [
+        'id',
+        'ter_id',
+        'week',
+        'str_time',
+        'end_time',
+    ];
+
 }
