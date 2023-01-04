@@ -30,7 +30,7 @@ Route::get('/',[HomeController::class,'index'])->name('index');
     #查看課程
     Route::get('classes/{class}',[ClassesController::class,'index'])->name('classes.index');
     #會員預約課程
-    Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
+    Route::get('classes/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
     Route::post('classes/{class}/reserves',[ClassesReserveController::class,'store'])->name('classes.reserves.store');
     #會員取消課程
     Route::delete('myreserves/{reserve}',[ReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
@@ -87,7 +87,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 
-/*Route::middleware([
+Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -95,7 +95,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('index');
     })->name('index');
-});*/
+});
 
 
 Route::resource('staffs',StaffsController::class);
