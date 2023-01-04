@@ -34,6 +34,7 @@ class ClassesController extends Controller
      */
     public function create()
     {
+
         return view('admin.layouts.classes.create');
     }
 
