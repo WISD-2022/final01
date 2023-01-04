@@ -73,7 +73,8 @@ class ClassesController extends Controller
      */
     public function edit(Classes $class)
     {
-        $data = DB::table('classes')->where('id',$class)->get();
+        $data = Classes::find($class);
+        //dd($data);
         return view('admin.layouts.classes.edit',['classes' => $data]);
     }
 
@@ -86,7 +87,15 @@ class ClassesController extends Controller
      */
     public function update(UpdateClassesRequest $request, Classes $class)
     {
-        //
+        $data=Classes::find($class);
+        $class->update([
+            'name'=>$request->name,
+            'intro'=>$request->intro,
+            'amount'=>$request->amount,
+            'time'=>$request->time,
+        ]);
+//
+        return redirect()->route('admin.classes.index')->with('alert', '更新成功!');
     }
 
     /**
