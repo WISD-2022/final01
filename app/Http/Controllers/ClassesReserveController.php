@@ -13,7 +13,8 @@ class ClassesReserveController extends Controller
      */
     public function index()
     {
-        //
+       // return ('sdsad');
+       //return view('class.reserve.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ClassesReserveController extends Controller
      */
     public function create()
     {
-        //
+        return view('reserve.create');
     }
 
     /**
