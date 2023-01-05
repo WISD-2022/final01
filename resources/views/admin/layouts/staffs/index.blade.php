@@ -12,13 +12,37 @@
                 <table id="datatablesSimple">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Introduce</th>
-                        <th>Image</th>
+                        <th>姓名</th>
+                        <th>介紹</th>
+                        <th>圖片</th>
                     </tr>
                     </thead>
-            </tbody>
-        </table>
+
+                    <tbody>
+                    @foreach($staffs as $staffs)
+                        <tr>
+                            <td style="text-align: left">{{$staffs->name}}</td>
+                            <td style="text-align: left">{{$staffs->introduce}}</td>
+                            <td style="text-align: left">{{$staffs->img_path}}</td>
+                            <td style="text-align: right;width: 10%">
+                                <form action="{{ route('admin.staffs.edit',$staffs->id) }}" method="GET">
+                                    @csrf
+                                    <button class="btn btn-secondary">修改</button>
+                                </form></td>
+                            <td style="text-align: right;width: 10%">
+                                <form action="{{ route('admin.staffs.destroy',$staffs->id) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    {{method_field('DELETE')}}
+                                    {{csrf_field()}}
+                                    <button class="btn btn-danger">刪除</button>
+                                </form></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
                 <a class="btn btn-success btn-sm" href="{{ route('admin.staffs.create') }}">新增美甲老師</a>
+            </div>
+        </div>
     </div>
 @endsection

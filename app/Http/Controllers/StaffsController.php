@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Staffs;
 use App\Http\Requests\StoreStaffsRequest;
 use App\Http\Requests\UpdateStaffsRequest;
+use Illuminate\Support\Facades\DB;
 
 class StaffsController extends Controller
 {
@@ -15,7 +16,8 @@ class StaffsController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.staffs.index');
+        $data = DB::table('staffs')->get();
+        return view('admin.layouts.staffs.index',['staffs' => $data]);
     }
 
     /**
@@ -71,10 +73,8 @@ class StaffsController extends Controller
      */
     public function edit(Staffs $staffs)
     {
-        $data = [
-            'staffs'=>$staffs,
-        ];
-        return view('admin.layouts.staffs.edit', $data);
+        $data = DB::table('staffs')->get();
+        return view('admin.layouts.staffs.index',$data);
     }
 
     /**
@@ -86,8 +86,13 @@ class StaffsController extends Controller
      */
     public function update(UpdateStaffsRequest $request, Staffs $staffs)
     {
-        $staffs->update($request->all());
-        return redirect()->route('staffs.index');
+        $data = Staffs::find($staffs);
+        $staffs->update([
+            'name'=>$request->name,
+            'introduce'=>$request->introduce,
+            'img_path'=>$request->img_path,
+        ]);
+        return redirect()->route('admin.staffs.index');
     }
 
     /**
@@ -99,6 +104,6 @@ class StaffsController extends Controller
     public function destroy(Staffs $staffs)
     {
         $staffs->delete();
-        return redirect()->route('staffs.index');
+        return redirect()->route('admin.staffs.index')->with('alert','更新成功!');
     }
 }
