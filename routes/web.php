@@ -24,20 +24,18 @@ use App\Http\Controllers\FlightController;
 
 Route::get('/',[HomeController::class,'index'])->name('index');
 
-//Route::prefix('/')->name('/')->group(function (){
-    #查看美甲師
-    Route::get('staffs/{staff}',[StaffsController::class,'index'])->name('staffs.index');
-    #查看課程
-    Route::get('classes/{class}',[ClassesController::class,'index'])->name('classes.index');
-    #會員預約課程
-    Route::get('classes/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
-    Route::post('classes/{class}/reserves',[ClassesReserveController::class,'store'])->name('classes.reserves.store');
-    #會員取消課程
-    Route::delete('myreserves/{reserve}',[ReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
-    #會員查看所有會議紀錄
-    Route::get('myreserves',[ReserveController::class,'index'])->name('myreserves.index');
 
-//});
+#查看美甲師
+Route::get('staffs/{staff}',[StaffsController::class,'index'])->name('staffs.index');
+#查看課程
+Route::get('classes/{class}',[ClassesController::class,'index'])->name('classes.index');
+#會員預約課程
+Route::get('classes/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
+Route::post('classes/{class}/reserves',[ClassesReserveController::class,'store'])->name('classes.reserves.store');
+#會員取消課程
+Route::delete('myreserves/{reserve}',[ReserveController::class,'destroy'])->name('myreserves.reserve.destroy');
+#會員查看所有會議紀錄
+Route::get('myreserves',[ReserveController::class,'index'])->name('myreserves.index');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     #後台首頁
@@ -78,12 +76,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::patch('classes/{class}',[ClassesController::class,'update'])->name('classes.update');
     #刪除課程
     Route::delete('classes/{class}',[ClassesController::class,'destroy'])->name('classes.destroy');
-    /*Route::get('posts', [AdminPostsController::class, 'index'])->name("posts.index");
-    Route::get('posts/create', [AdminPostsController::class, 'create'])->name("posts.create");
-    Route::post('posts', [AdminPostsController::class, 'store'])->name("posts.store");
-    Route::get('posts/{post}/edit', [AdminPostsController::class, 'edit'])->name("posts.edit");
-    Route::patch('posts/{post}', [AdminPostsController::class, 'update'])->name("posts.update");
-    Route::delete('posts/{post}', [AdminPostsController::class, 'destroy'])->name("posts.destroy");*/
 });
 
 
