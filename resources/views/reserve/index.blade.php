@@ -20,10 +20,10 @@
                     <!--<th scope="col">標題</th>-->
                     <td style="text-align: left">{{$users->name}}</td>
                     <td style="text-align: left">{{$users->date}}</td>
-                    <td style="text-align: left;width: 10%">{{$users->str_time}}</td>
-                    <td style="text-align: left;width: 10%">{{$users->end_time}}</td>
+                    <td style="text-align: left">{{$users->str_time}}</td>
+                    <td style="text-align: left">{{$users->end_time}}</td>
                     <td style="text-align: right;width: 10%">
-                        <form action="{{ route('myreserves.reserve.destroy',$users->id) }}" method="POST">
+                        <form action="{{ route('reserves.destroy',$users->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             {{method_field('DELETE')}}
@@ -35,7 +35,7 @@
             @endforeach
             </tbody>
         </table>
-       
+
     </div>
 
 @endsection

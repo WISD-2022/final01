@@ -25,7 +25,7 @@ class ClassesReserveController extends Controller
 //            'order_date' => $orders,
 //            'users'=>$users
 //        // return ('sdsad');
-       return view('myreserves.index',['users'=>$users]);
+       return view('reserve.index',['users'=>$users]);
     }
 
     /**
@@ -109,8 +109,11 @@ class ClassesReserveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reserve $reserve)
     {
         //
+        $reserve->delete();
+        return redirect(route('reserves.index'));
+
     }
 }

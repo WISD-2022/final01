@@ -81,6 +81,6 @@ class ReserveController extends Controller
      */
     public function destroy(Reserve $reserve)
     {
-        //
+       //
     }
 }
