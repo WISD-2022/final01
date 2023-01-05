@@ -26,10 +26,7 @@
                     <td style="text-align: left;width: 10%">{{$classes->time}}</td>
                     <td style="text-align: right;width: 10%">$NT.{{$classes->amount}}</td>
                     <td style="text-align: right;width: 10%">
-                        <form action="{{ route('admin.classes.edit',$classes->id) }}" method="GET">
-                            @csrf
-                            <button class="btn btn-secondary">修改</button>
-                        </form>
+                            <a class="btn btn-secondary" href="{{ route('admin.classes.edit',$classes->id) }}">修改</a>
                         <form action="{{ route('admin.classes.destroy',$classes->id) }}" method="POST">
                             @method('DELETE')
                             @csrf

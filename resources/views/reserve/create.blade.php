@@ -3,32 +3,59 @@
 @section('page-title', '預約表單')
 
 @section('page-content')
-    <form action="{{ route('reserve.store') }}" method="POST">
-        @csrf
-        <div class="from-group">
-            <label for="title" class="form-label">老師名字： </label>
-            <input id="name" name="name" placeholder="請輸入姓名">
+        <form action="{{route('classes.reserves.store',$users[0]->id)}} " method="POST">
+            @csrf
 
-            <p></p>
-            <label for="content" class="form-label">介紹: </label>
-            <textarea id="introduce" name="introduce" class="form-control" rows="10" placeholder="請輸入介紹"></textarea>
+            <div class="text-right">
+                <p>課程名稱:{{$users[0]->name}}</p>
+                <br>
+                <p>預約日期:</p>
+                <input type="date" id="date" name="date" name="trip-start">
+                <br>
+                <!--時間-->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">開始時段</label>
+                    </div>
+                    <select class="custom-select" name="str_time">
+                        <option selected>9:00</option>
+                        <option value="1">10:00</option>
+                        <option value="2">11:00</option>
+                        <option value="3">12:00</option>
+                        <option value="4">1:00</option>
+                        <option value="5">2:00</option>
+                        <option value="6">3:00</option>
+                        <option value="7">4:00</option>
+                        <option value="8">5:00</option>
+                        <option value="9">6:00</option>
 
-            <p></p>
-            <label for="content" class="form-label">上傳圖檔: </label>
-            <input id="img_path" name="img_path" placeholder="假裝圖檔路徑">
-            <!--<label action="@{{route('flight.upload')}}" class="form-label">上傳圖片檔案:  </label>
-                <form action="@{{route('flight.upload')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-            <div class="mb-2">
-                <input type="file" name="photo" accept="image/*">
+                    </select>
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">結束時段</label>
+                    </div>
+                    <select class="custom-select" name="end_time">
+                        <option value="1">10:00</option>
+                        <option value="2">11:00</option>
+                        <option value="3">12:00</option>
+                        <option value="4">1:00</option>
+                        <option value="5">2:00</option>
+                        <option value="6">3:00</option>
+                        <option value="7">4:00</option>
+                        <option value="8">5:00</option>
+                        <option value="9">6:00</option>
+
+                    </select>
+                </div>
+                <p>指定老師:</p>
+                <tbody>
+                    <select class="custom-select" name="ter">
+                        <option selected>不指定</option>
+                        @foreach($t as $key => $t)
+                            <option value="{{$t->id}}">{{$t->name}}</option>
+                        @endforeach
+                    </select>
+                </tbody>
+                <button class="btn btn-primary btn-sm" type="submit">儲存</button>
             </div>
-            <button class="btn btn-info" type="submit">Save Photo</button>
-        </form>-->
-        </div>
-
-        <div class="text-right">
-            <p></p>
-            <button class="btn btn-primary btn-sm" type="submit">儲存</button>
-        </div>
-    </form>
+        </form>
 @endsection

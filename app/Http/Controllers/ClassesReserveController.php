@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Classes;
+use App\Models\Reserve;
+use App\Models\Staffs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ClassesReserveController extends Controller
 {
@@ -13,8 +17,15 @@ class ClassesReserveController extends Controller
      */
     public function index()
     {
-       // return ('sdsad');
-       //return view('class.reserve.index');
+        $users = Reserve::all();
+//        join('', 'users.id', '=', 'orders.user_id')
+//            ->select('users.email')
+//            ->get();
+//        $data = [
+//            'order_date' => $orders,
+//            'users'=>$users
+//        // return ('sdsad');
+       return view('reserve.index',['users'=>$users]);
     }
 
     /**
@@ -22,9 +33,17 @@ class ClassesReserveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($class)
     {
-        return view('reserve.create');
+        $users = Classes::where('id',$class)->get();
+        $t = Staffs::all();
+        //            'order_date' => $orders,
+//dd($t);
+        $data = [
+            'users'=>$users,
+            't'=>$t
+        ];
+        return view('reserve.create',$data);
     }
 
     /**
@@ -33,21 +52,21 @@ class ClassesReserveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$class)
     {
-        Staffs::create([
-            'name'=>$request->name,
-            'introduce'=>$request->introduce,
-            'img_path'=>$request->img_path,
+       //    dd($request->ter);
+        // dd($request->class);
+//        dd($class);
+        Reserve::create([
+            'ter_id'=>$request->ter,
+            'user_id'=>Auth::user()->id,
+            'class_id'=>$class,
+            'date'=>$request->date,
+            'str_time'=>$request->str_time,
+            'end_time'=>$request->end_time,
         ]);
-        /*if($request->has('image')) {
-            //影像圖檔-自訂檔案名稱
-            $imageName = $request->id.'_'.time().'.'.$request->img_path->extension();
-            //把檔案存到公開的資料夾
-            $file_path = $request->image->move(public_path('images'), $imageName);
-
-        }*/
-        return view('admin.layouts.staffs.index');
+        $users = Reserve::all();
+        return view('reserve.index',['users'=>$users]);
     }
 
     /**
@@ -90,8 +109,11 @@ class ClassesReserveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reserve $reserve)
     {
         //
+        $reserve->delete();
+        return redirect(route('reserves.index'));
+
     }
 }

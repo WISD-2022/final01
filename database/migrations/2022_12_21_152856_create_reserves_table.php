@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedbigInteger('class_id');
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
-            $table->text('pay');
             $table->date('date');
             $table->time('str_time');
             $table->time('end_time');

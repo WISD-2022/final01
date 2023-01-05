@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reserve;
 use App\Http\Requests\StoreReserveRequest;
 use App\Http\Requests\UpdateReserveRequest;
+use Illuminate\Support\Facades\DB;
 
 class ReserveController extends Controller
 {
@@ -15,7 +16,8 @@ class ReserveController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('reserves')->get();
+        return view('reserve.index',['reserves' => $data]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ReserveController extends Controller
      */
     public function create()
     {
-        //
+        return view('myreserves.index');
     }
 
     /**
@@ -81,6 +83,6 @@ class ReserveController extends Controller
      */
     public function destroy(Reserve $reserve)
     {
-        //
+       //
     }
 }
