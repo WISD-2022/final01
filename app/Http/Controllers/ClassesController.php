@@ -47,7 +47,7 @@ class ClassesController extends Controller
     public function store(StoreClassesRequest $request)
     {
         Classes::create([
-            'name'=>$request->name,
+            'name'=>$request->class_name,
             'intro'=>$request->intro,
             'amount'=>$request->amount,
             'time'=>$request->time,
@@ -90,7 +90,7 @@ class ClassesController extends Controller
     {
         $data=Classes::find($class);
         $class->update([
-            'name'=>$request->name,
+            'name'=>$request->class_name,
             'intro'=>$request->intro,
             'amount'=>$request->amount,
             'time'=>$request->time,

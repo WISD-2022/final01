@@ -16,7 +16,7 @@
                         <span class="input-group-text">課程名稱</span>
                     </div>
                     <input type="text" class="form-control" name="name"
-                           value="{{$classes[0]->name}}">
+                           value="{{$classes[0]->class_name}}">
                 </div>
                 <div class="input-group mb-3" style="width: 50rem;height: 20rem">
                     <div class="input-group-prepend">
