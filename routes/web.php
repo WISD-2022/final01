@@ -49,10 +49,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('flight/file', [FlightController::class, 'file'])->name("flight.file");
     Route::post('flight/upload', [FlightController::class, 'upload'])->name("flight.upload");
     #修改老師
-    Route::get('staffs/{staff}/edit', [StaffsController::class, 'edit'])->name("staffs.edit");
-    Route::patch('staffs/{staff}', [StaffsController::class, 'update'])->name("staffs.update");
+    Route::get('staffs/{staffs}/edit', [StaffsController::class, 'edit'])->name("staffs.edit");
+    Route::patch('staffs/{staffs}', [StaffsController::class, 'update'])->name("staffs.update");
     #刪除老師
-    Route::delete('staffs/{staff}', [StaffsController::class, 'destroy'])->name("staffs.destroy");
+    Route::delete('staffs/{staffs}', [StaffsController::class, 'destroy'])->name("staffs.destroy");
 
     #排班首頁
     Route::get('schedules', [ScheduleController::class, 'index'])->name("schedules.index");
