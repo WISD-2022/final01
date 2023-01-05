@@ -17,7 +17,7 @@ class StaffsController extends Controller
     public function index()
     {
         $data = DB::table('staffs')->get();
-        return view('admin.layouts.staffs.index',['staffs' => $data]);
+        return view('staff.index',['staffs' => $data]);
     }
 
     /**

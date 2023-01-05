@@ -25,9 +25,9 @@ use App\Http\Controllers\FlightController;
 Route::get('/',[HomeController::class,'index'])->name('index');
 
 #查看美甲師
-Route::get('staffs/{staff}',[StaffsController::class,'index'])->name('staffs.index');
+Route::get('staffs',[StaffsController::class,'index'])->name('staffs.index');
 #查看課程
-Route::get('classes/{class}',[ClassesController::class,'index'])->name('classes.index');
+Route::get('classes',[ClassesController::class,'index'])->name('classes.index');
 #會員預約課程
 Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
 Route::post('classes/{class}/reserves',[ClassesReserveController::class,'store'])->name('classes.reserves.store');
