@@ -74,7 +74,7 @@ class StaffsController extends Controller
     public function edit(Staffs $staffs)
     {
         $data = DB::table('staffs')->get();
-        return view('admin.layouts.staffs.index',$data);
+        return view('admin.layouts.staffs.edit',['staffs' => $data]);
     }
 
     /**
@@ -92,7 +92,7 @@ class StaffsController extends Controller
             'introduce'=>$request->introduce,
             'img_path'=>$request->img_path,
         ]);
-        return redirect()->route('admin.staffs.index');
+        return redirect()->route('admin.staffs.index')->with('alert','更新成功!');
     }
 
     /**
@@ -104,6 +104,6 @@ class StaffsController extends Controller
     public function destroy(Staffs $staffs)
     {
         $staffs->delete();
-        return redirect()->route('admin.staffs.index')->with('alert','更新成功!');
+        return redirect()->route('admin.staffs.index');
     }
 }
