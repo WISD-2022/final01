@@ -41,7 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name("index");
 
     #老師管理首頁
-    Route::get('staffs', [StaffsController::class, 'index'])->name("staffs.index");
+    Route::get('staffs', [StaffsController::class, 'admin_index'])->name("staffs.index");
     #新增老師
     Route::get('staffs/create', [StaffsController::class, 'create'])->name("staffs.create");
     Route::post('staffs', [StaffsController::class, 'store'])->name("staffs.store");
