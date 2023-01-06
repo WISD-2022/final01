@@ -32,16 +32,16 @@ Route::get('classes',[ClassesController::class,'index'])->name('classes.index');
 Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
 Route::post('classes/{class}/reserves',[ClassesReserveController::class,'store'])->name('classes.reserves.store');
 #會員取消課程
-Route::delete('reserves/{reserve}',[ReserveController::class,'destroy'])->name('reserves.reserve.destroy');
+Route::delete('reserves/{reserve}',[ClassesReserveController::class,'destroy'])->name('reserves.destroy');
 #會員查看所有會議紀錄
-Route::get('reserves',[ReserveController::class,'index'])->name('reserves.index');
+Route::get('reserves',[ClassesReserveController::class,'index'])->name('reserve');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     #後台首頁
     Route::get('/', [AdminController::class, 'index'])->name("index");
 
     #老師管理首頁
-    Route::get('staffs', [StaffsController::class, 'index'])->name("staffs.index");
+    Route::get('staffs', [StaffsController::class, 'admin_index'])->name("staffs.index");
     #新增老師
     Route::get('staffs/create', [StaffsController::class, 'create'])->name("staffs.create");
     Route::post('staffs', [StaffsController::class, 'store'])->name("staffs.store");
@@ -91,9 +91,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });*/
 
 
-Route::resource('staffs',StaffsController::class);
-Route::resource('classes',ClassesController::class);
-Route::resource('schedules', ScheduleController::class);
-Route::resource('reserves',ReserveController::class);
-Route::resource('trades',TradesController::class);
-Route::resource('classes.reserve',ClassesReserveController::class);
+//Route::resource('staffs',StaffsController::class);
+//Route::resource('classes',ClassesController::class);
+//Route::resource('schedules', ScheduleController::class);
+//Route::resource('reserves',ReserveController::class);
+//Route::resource('trades',TradesController::class);
+//Route::resource('classes.reserve',ClassesReserveController::class);

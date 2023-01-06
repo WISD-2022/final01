@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name',10);
             $table->text('introduce');
             $table->text('img_path');
+            $table->int('ismember');
             $table->timestamps();
         });
     }
