@@ -14,12 +14,10 @@ class StaffsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         $data = DB::table('staffs')->get();
-        return view('staff.index',['staffs' => $data]);
-
+        return view('staffs.index',['staffs' => $data]);
     }
 
     public function admin_index()
@@ -58,7 +56,7 @@ class StaffsController extends Controller
             $file_path = $request->image->move(public_path('images'), $imageName);
 
         }*/
-        return view('admin.layouts.staffs.index');
+        return redirect()->route('admin.staffs.index');
     }
 
 
@@ -81,7 +79,7 @@ class StaffsController extends Controller
      */
     public function edit(Staffs $staffs)
     {
-        $data = DB::table('staffs')->get();
+        $data =Staffs::find($staffs);
         return view('admin.layouts.staffs.edit',['staffs' => $data]);
     }
 
@@ -92,7 +90,7 @@ class StaffsController extends Controller
      * @param  \App\Models\Staffs  $staffs
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStaffsRequest $request, Staffs $staffs)
+    public function update(UpdateStaffsRequest $request, Staffs $staffs) //$staffs 對應到路由{$staffs}
     {
         $data = Staffs::find($staffs);
         $staffs->update([

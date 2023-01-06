@@ -17,7 +17,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $data = DB::table('schedules')->get();
+        $data = DB::table('schedules')
+                ->join('staffs','staffs.id','=','ter_id')
+                ->get();
         return view('admin.layouts.schedules.index', ['schedules' => $data]);
     }
 
@@ -35,17 +37,17 @@ class ScheduleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreScheduleRequest  $request
+     * @param \App\Http\Requests\StoreScheduleRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreScheduleRequest $request)
     {
-        $ter_id = Staffs::where('name',$request->staffselect)->get();
+        $ter_id = Staffs::where('name', $request->staffselect)->get();
         Schedule::create([
-            'ter_id'=>$request->staffselect,
-            'week'=>$request->week,
-            'str_time'=>$request->str_time,
-            'end_time'=>$request->end_time,
+            'ter_id' => $request->staffselect,
+            'week' => $request->week,
+            'str_time' => $request->str_time,
+            'end_time' => $request->end_time,
         ]);
         return view('admin.layouts.schedules.index');
     }
@@ -53,7 +55,7 @@ class ScheduleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Schedule  $schedule
+     * @param \App\Models\Schedule $schedule
      * @return \Illuminate\Http\Response
      */
     public function show(Schedule $schedule)
@@ -64,34 +66,43 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Schedule  $schedule
+     * @param \App\Models\Schedule $schedule
      * @return \Illuminate\Http\Response
      */
     public function edit(Schedule $schedule)
     {
-        //
+        $data = Schedule::find($schedule);
+        return view('admin.layouts.schedules.edit',['schedule' => $data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateScheduleRequest  $request
-     * @param  \App\Models\Schedule  $schedule
+     * @param \App\Http\Requests\UpdateScheduleRequest $request
+     * @param \App\Models\Schedule $schedule
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateScheduleRequest $request, Schedule $schedule)
     {
-        //
+        $data = Staffs::find($schedule);
+        $schedule->update([
+            'ter_id' => $request->staffselect,
+            'week' => $request->week,
+            'str_time' => $request->str_time,
+            'end_time' => $request->end_time,
+        ]);
+        return redirect()->route('admin.schedules.index')->with('alert','更新成功!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Schedule  $schedule
+     * @param \App\Models\Schedule $schedule
      * @return \Illuminate\Http\Response
      */
     public function destroy(Schedule $schedule)
     {
-        //
+        $schedule->delete();
+        return redirect()->route('admin.schedules.index');
     }
 }

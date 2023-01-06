@@ -38,7 +38,7 @@ class ReserveController extends Controller
      */
     public function create()
     {
-        return view('myreserves.index');
+        return view('reserves.index');
     }
 
     /**
