@@ -78,7 +78,7 @@ class StaffsController extends Controller
      */
     public function edit(Staffs $staffs)
     {
-        $data = DB::table('staffs')->get();
+        $data =Staffs::find($staffs);
         return view('admin.layouts.staffs.edit',['staffs' => $data]);
     }
 

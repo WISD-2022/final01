@@ -6,6 +6,7 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">修改美甲老師</li>
         </ol>
+
         <form action="{{ route('admin.staffs.update',$staffs[0]->id) }}" method="POST">
             @method('PATCH')
             @csrf
