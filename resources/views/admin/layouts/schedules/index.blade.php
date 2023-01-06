@@ -18,15 +18,15 @@
                     <tbody>
                     @foreach($schedules as $key=>$schedule)
                         <tr>
-                            <td style="text-align: left">{{$schedule->id}}</td>
+                            <td style="text-align: left">{{$schedule->name}}</td>
                             <td style="text-align: left">{{$schedule->week}}</td>
                             <td style="text-align: left">{{$schedule->str_time}}</td>
                             <td style="text-align: left">{{$schedule->end_time}}</td>
                             <td style="text-align: right;width: 10%">
-                                <a class="btn btn-secondary" href="{{ route('admin.schedules.edit',$schedule->id) }}">修改</a>
+                                <a class="btn btn-secondary" href="{{ route('admin.schedules.edit',$schedules_sid[$key]->id) }}">修改</a>
                             </td>
                             <td style="text-align: right;width: 10%">
-                                <form action="{{ route('admin.schedules.destroy',$schedule->id) }}" method="POST">
+                                <form action="{{ route('admin.schedules.destroy',$schedules_sid[$key]->id) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     {{method_field('DELETE')}}

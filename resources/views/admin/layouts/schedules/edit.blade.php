@@ -4,14 +4,15 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4">排班管理</h1>
         <br>
-        <form action="{{ route('admin.schedules.update',$schedule[0]->id) }}" method="POST">
+        <form action="{{ route('admin.schedules.update',$id[0]->id) }}" method="POST">
             @method('PATCH')
             @csrf
             <div class="from-group">
                 <label class="form-label">選擇老師: </label>
-                    <select id='staffselect' name="staffselect">
+                    <select id='staffselect' name="ter_id">
                     @foreach($schedules as $key=>$schedule)<!--$key 表示$schedule 陣列索引-->
-                        <option value="{!!$key!!}">{{$schedule->name}}</option>
+
+                        <option value="{{$schedule->id}}">{{$schedule->name}}</option>
                     @endforeach
                     </select>
                 <br>

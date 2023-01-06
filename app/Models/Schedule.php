@@ -10,7 +10,7 @@ class Schedule extends Model
 {
     use HasFactory;
 
-    public function  staff(){
+    public function  staffs(){
         return $this->belongsTo(Staffs::class);
     }
     protected $fillable = [

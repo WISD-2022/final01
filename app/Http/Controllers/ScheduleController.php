@@ -20,7 +20,8 @@ class ScheduleController extends Controller
         $data = DB::table('schedules')
                 ->join('staffs','staffs.id','=','ter_id')
                 ->get();
-        return view('admin.layouts.schedules.index', ['schedules' => $data]);
+        $schedules_sid = DB::table('schedules')->get();
+        return view('admin.layouts.schedules.index', ['schedules' => $data,'schedules_sid' => $schedules_sid]);
     }
 
     /**
@@ -49,7 +50,7 @@ class ScheduleController extends Controller
             'str_time' => $request->str_time,
             'end_time' => $request->end_time,
         ]);
-        return view('admin.layouts.schedules.index');
+        return redirect()->route('admin.schedules.index');
     }
 
     /**
@@ -71,8 +72,11 @@ class ScheduleController extends Controller
      */
     public function edit(Schedule $schedule)
     {
-        $data = Schedule::find($schedule);
-        return view('admin.layouts.schedules.edit',['schedule' => $data]);
+
+        $id = Schedule::find($schedule);
+        $data = DB::table('staffs')->get();
+        return view('admin.layouts.schedules.edit',['schedules' => $data,'id'=>$id]);
+
     }
 
     /**
@@ -86,7 +90,7 @@ class ScheduleController extends Controller
     {
         $data = Staffs::find($schedule);
         $schedule->update([
-            'ter_id' => $request->staffselect,
+            'ter_id' => $request->ter_id,
             'week' => $request->week,
             'str_time' => $request->str_time,
             'end_time' => $request->end_time,

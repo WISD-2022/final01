@@ -8,16 +8,15 @@
             @csrf
             <div class="from-group">
 {{--                @dd($schedules[0]->id)--}}
-                <label class="form-label">選擇老師: </label>
+                <label for='staffselect' class="form-label">選擇老師: </label>
                     <select id='staffselect' name="staffselect">
-
                     @foreach($schedules as $key=>$schedule)<!--$key 表示$schedule 陣列索引-->
-                        <option value="{!!$key!!}">{{$schedule->name}}</option>
+                        <option value="{{$schedule->id}}">{{$schedule->name}}</option>
                     @endforeach
                     </select>
                 <br>
-                <label class="form-label">選擇星期: </label>
-                    <select name="week">
+                <label for='week' class="form-label">選擇星期: </label>
+                    <select id="week" name="week">
                         <option value="一">一</option>
                         <option value="二">二</option>
                         <option value="三">三</option>
@@ -27,8 +26,8 @@
                         <option value="日">日</option>
                     </select>
                 <br>
-                <label class="form-label">選擇上班時間: </label>
-                    <select  name="str_time">
+                <label for='str_time' class="form-label">選擇上班時間: </label>
+                    <select id="str_time" name="str_time">
                         <option value="10:00:00">10:00</option>
                         <option value="11:00:00">11:00</option>
                         <option value="12:00:00">12:00</option>
@@ -43,8 +42,8 @@
                         <option value="21:00:00">21:00</option>
                     </select>
                 <br>
-                <label class="form-label">選擇下班時間: </label>
-                    <select  name="end_time">
+                <label for="end_time" class="form-label">選擇下班時間: </label>
+                    <select id="end_time" name="end_time">
                         <option value="10:00:00">10:00</option>
                         <option value="11:00:00">11:00</option>
                         <option value="12:00:00">12:00</option>

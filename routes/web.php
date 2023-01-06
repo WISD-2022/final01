@@ -63,7 +63,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('schedules/{schedule}/edit', [ScheduleController::class, 'edit'])->name("schedules.edit");
     Route::patch('schedules/{schedule}', [ScheduleController::class, 'update'])->name("schedules.update");
     #刪除排班
-    Route::delete('schedules/{schedule}', [StaffsController::class, 'destroy'])->name("schedules.destroy");
+    Route::delete('schedules/{schedule}', [ScheduleController::class, 'destroy'])->name("schedules.destroy");
 
     #課程管理
     Route::get('classes', [ClassesController::class, 'admin_index'])->name("classes.index");
