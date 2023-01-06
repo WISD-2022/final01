@@ -6,6 +6,7 @@ use App\Models\Classes;
 use App\Http\Requests\StoreClassesRequest;
 use App\Http\Requests\UpdateClassesRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ClassesController extends Controller
 {
@@ -16,8 +17,13 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        $data = DB::table('classes')->get();
-        return view('class.index',['classes' => $data]);
+        if(Auth::check()) {
+            $data = DB::table('classes')->get();
+            return view('class.index', ['classes' => $data]);
+        }
+        else{
+            return redirect()->route('index')->with('alert', '請登入!');
+        }
 
     }
 
@@ -47,7 +53,7 @@ class ClassesController extends Controller
     public function store(StoreClassesRequest $request)
     {
         Classes::create([
-            'name'=>$request->class_name,
+            'class_name'=>$request->class_name,
             'intro'=>$request->intro,
             'amount'=>$request->amount,
             'time'=>$request->time,

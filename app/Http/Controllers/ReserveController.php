@@ -18,6 +18,7 @@ class ReserveController extends Controller
      */
     public function index()
     {
+
         $data = DB::table('reserves')->get();
         return view('reserve.index',['reserves' => $data]);
     }

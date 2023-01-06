@@ -1,6 +1,13 @@
 @extends('layouts.master')
 @section('title', '課程瀏覽')
 @section('page-content')
+    <script>
+        var msg = '{{Session::get('alert')}}';
+        var exist = '{{Session::has('alert')}}';
+        if(exist){
+            alert(msg);
+        }
+    </script>
     <div class="container-fluid px-4">
         <h1 class="mt-4">課程瀏覽</h1>
         <ol class="breadcrumb mb-4">
