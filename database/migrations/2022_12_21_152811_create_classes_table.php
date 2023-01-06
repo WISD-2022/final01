@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->string('name',50);
+            $table->string('class_name',50);
             $table->text('intro');
             $table->integer('amount');
             $table->time('time');
+            $table->int('ismember');
             $table->timestamps();
         });
     }

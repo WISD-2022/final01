@@ -3,11 +3,11 @@
 @section('page-title', '預約表單')
 
 @section('page-content')
-        <form action="{{route('classes.reserves.store',$users[0]->id)}} " method="POST">
+        <form action="{{route('classes.reserves.store',$classes[0]->id)}} " method="POST">
             @csrf
 
             <div class="text-right">
-                <p>課程名稱:{{$users[0]->name}}</p>
+                <p>課程名稱:{{$classes[0]->name}}</p>
                 <br>
                 <p>預約日期:</p>
                 <input type="date" id="date" name="date" name="trip-start">

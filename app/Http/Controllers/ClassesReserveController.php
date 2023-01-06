@@ -21,11 +21,11 @@ class ClassesReserveController extends Controller
 //        join('', 'users.id', '=', 'orders.user_id')
 //            ->select('users.email')
 //            ->get();
-//        $data = [
-//            'order_date' => $orders,
-//            'users'=>$users
-//        // return ('sdsad');
-       return view('reserve.index',['users'=>$users]);
+        $data = [
+            'users' => $users,
+            ];
+        // return ('sdsad');
+       return view('reserve')->with(['users'=>$users]);
     }
 
     /**
@@ -35,12 +35,12 @@ class ClassesReserveController extends Controller
      */
     public function create($class)
     {
-        $users = Classes::where('id',$class)->get();
+        $classes = Classes::where('id',$class)->get();
         $t = Staffs::all();
         //            'order_date' => $orders,
 //dd($t);
         $data = [
-            'users'=>$users,
+            'classes'=>$classes,
             't'=>$t
         ];
         return view('reserve.create',$data);
@@ -66,7 +66,8 @@ class ClassesReserveController extends Controller
             'end_time'=>$request->end_time,
         ]);
         $users = Reserve::all();
-        return view('reserve.index',['users'=>$users]);
+//        redirect()->route('classes.index')
+        return redirect()->route('reserve')->with(['users'=>$users]);
     }
 
     /**
@@ -112,8 +113,9 @@ class ClassesReserveController extends Controller
     public function destroy(Reserve $reserve)
     {
         //
+//        dd($reserve);
         $reserve->delete();
-        return redirect(route('reserves.index'));
+        return redirect()->route('reserve');
 
     }
 }

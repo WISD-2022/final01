@@ -14,17 +14,18 @@ class StaffsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function admin_index()
-    {
-        $data = DB::table('staffs')->get();
-        return view('admin.layouts.staffs.index',['staffs' => $data]);
-    }
     public function index()
     {
         $data = DB::table('staffs')->get();
         return view('staffs.index',['staffs' => $data]);
     }
 
+    public function admin_index()
+    {
+        $data = DB::table('staffs')->get();
+        return view('admin.layouts.staffs.index',['staffs' => $data]);
+
+    }
     /**
      * Show the form for creating a new resource.
      *

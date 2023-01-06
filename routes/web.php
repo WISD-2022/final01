@@ -25,16 +25,16 @@ use App\Http\Controllers\FlightController;
 Route::get('/',[HomeController::class,'index'])->name('index');
 
 #查看美甲師
-Route::get('staffs/{staff}',[StaffsController::class,'index'])->name('staffs.index');
+Route::get('staffs',[StaffsController::class,'index'])->name('staffs.index');
 #查看課程
-Route::get('classes/{class}',[ClassesController::class,'index'])->name('classes.index');
+Route::get('classes',[ClassesController::class,'index'])->name('classes.index');
 #會員預約課程
 Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create');
 Route::post('classes/{class}/reserves',[ClassesReserveController::class,'store'])->name('classes.reserves.store');
 #會員取消課程
-Route::delete('reserves/{reserve}',[ReserveController::class,'destroy'])->name('reserves.reserve.destroy');
+Route::delete('reserves/{reserve}',[ClassesReserveController::class,'destroy'])->name('reserves.destroy');
 #會員查看所有會議紀錄
-Route::get('reserves',[ReserveController::class,'index'])->name('reserves.index');
+Route::get('reserves',[ClassesReserveController::class,'index'])->name('reserve');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     #後台首頁
@@ -75,6 +75,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::patch('classes/{class}',[ClassesController::class,'update'])->name('classes.update');
     #刪除課程
     Route::delete('classes/{class}',[ClassesController::class,'destroy'])->name('classes.destroy');
+    #後台瀏覽所有預約
+    Route::get('reserves',[ReserveController::class,'admin_index'])->name('reserves.index');
 });
 
 
@@ -89,9 +91,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });*/
 
 
-Route::resource('staffs',StaffsController::class);
-Route::resource('classes',ClassesController::class);
-Route::resource('schedules', ScheduleController::class);
-Route::resource('reserves',ReserveController::class);
-Route::resource('trades',TradesController::class);
-Route::resource('classes.reserve',ClassesReserveController::class);
+//Route::resource('staffs',StaffsController::class);
+//Route::resource('classes',ClassesController::class);
+//Route::resource('schedules', ScheduleController::class);
+//Route::resource('reserves',ReserveController::class);
+//Route::resource('trades',TradesController::class);
+//Route::resource('classes.reserve',ClassesReserveController::class);
