@@ -13,7 +13,7 @@
                 <th scope="col" style="text-align: left">課程名稱</th>
                 <th scope="col" style="text-align: left" >預約日期</th>
                 <th scope="col" style="text-align: left">開始時間</th>
-                <th scope="col" style="text-align: right" >結束時間</th>
+                <th scope="col" style="text-align: left" >結束時間</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
                 <tr>
                     <!--<th scope="col">標題</th>-->
 
-                    <td style="text-align: left">{{$users->name}}</td>
+                    <td style="text-align: left">{{$users->class_name}}</td>
                     <td style="text-align: left">{{$users->date}}</td>
                     <td style="text-align: left">{{$users->str_time}}</td>
                     <td style="text-align: left">{{$users->end_time}}</td>

@@ -6,6 +6,7 @@ use App\Models\Reserve;
 use App\Models\Staffs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class ClassesReserveController extends Controller
@@ -17,14 +18,12 @@ class ClassesReserveController extends Controller
      */
     public function index()
     {
-        $users = Reserve::all();
-//        join('', 'users.id', '=', 'orders.user_id')
-//            ->select('users.email')
-//            ->get();
-        $data = [
-            'users' => $users,
-            ];
-        // return ('sdsad');
+        //$users = Reserve::all();
+        $users = DB::table('reserves')
+            ->join('staffs','staffs.id','=','ter_id')
+            ->join('classes','classes.id','=','class_id')
+            ->get();
+//        return view('admin.layouts.reserve.index',['reserves'=>$data]);
        return view('reserve')->with(['users'=>$users]);
     }
 
