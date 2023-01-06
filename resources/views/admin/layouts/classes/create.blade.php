@@ -14,13 +14,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">課程名稱</span>
                     </div>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="class_name">
                 </div>
                 <div class="input-group mb-3" style="width: 50rem;height: 20rem">
                     <div class="input-group-prepend">
                         <span class="input-group-text">課程內容</span>
                     </div>
-                    <textarea type="text" class="form-control" name="name"
+                    <textarea type="text" class="form-control" name="intro"
                     ></textarea>
                 </div>
                 <div class="input-group mb-3" style="width: 10rem">

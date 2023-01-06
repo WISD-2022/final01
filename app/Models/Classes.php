@@ -15,7 +15,7 @@ class Classes extends Model
 
     protected $fillable = [
         'id',
-        'name',
+        'class_name',
         'intro',
         'amount',
         'time',
