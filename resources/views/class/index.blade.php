@@ -28,7 +28,7 @@
             @foreach($classes as $classes)
                 <tr>
                     <!--<th scope="col">標題</th>-->
-                    <td style="text-align: left">{{$classes->name}}</td>
+                    <td style="text-align: left">{{$classes->class_name}}</td>
                     <td style="text-align: left">{{$classes->intro}}</td>
                     <td style="text-align: left;width: 10%">{{$classes->time}}</td>
                     <td style="text-align: right;width: 10%">$NT.{{$classes->amount}}</td>

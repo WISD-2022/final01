@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title', '預約紀錄')
+@section('title', '預約紀錄')
 
 @section('page-content')
     <div class="container-fluid px-4">
