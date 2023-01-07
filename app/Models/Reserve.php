@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Reserve extends Model
 {
     protected $fillable = [
-        'date','ter_id','user_id','class_id',
-        'str_time','end_time','id'
+        'date',
+        'ter_id',
+        'user_id',
+        'class_id',
+        'str_time',
+        'pay',
+        //'end_time',
+        'id'
 
     ];
     use HasFactory;

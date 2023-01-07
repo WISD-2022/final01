@@ -50,7 +50,13 @@ class ReserveController extends Controller
      */
     public function store(StoreReserveRequest $request)
     {
-        //
+        //$pay = Classes::find('amount');
+        Reserve::create([
+            'date'=>$request->date,
+            'str_time'=>$request->str_time,
+            //'pay'=> $pay,
+        ]);
+        return redirect()->route('classes.index');
     }
 
     /**

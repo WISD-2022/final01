@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('page-title', '預約表')
+@section('title', '預約表')
 
 @section('page-content')
     <div class="container-fluid px-4">

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
             $table->date('date');
             $table->time('str_time');
-            $table->time('end_time');
+            //$table->time('end_time');
             $table->timestamps();
         });
     }
