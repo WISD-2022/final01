@@ -10,6 +10,7 @@ use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\TradesController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('classes/{class}',[ClassesController::class,'destroy'])->name('classes.destroy');
     #後台瀏覽所有預約
     Route::get('reserves',[ReserveController::class,'admin_index'])->name('reserves.index');
+
+    #查看顧客資料
+    Route::get('customers',[UserController::class,'index'])->name('customers.index');
+
 });
 
 

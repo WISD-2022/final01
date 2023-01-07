@@ -24,6 +24,13 @@
                     <div class="sb-nav-link-icon">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
+                    預約紀錄
+                </a>
+
+                <a class="nav-link" href="{{ route('admin.customers.index') }}">
+                    <div class="sb-nav-link-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
                     顧客資料
                 </a>
             </div>
