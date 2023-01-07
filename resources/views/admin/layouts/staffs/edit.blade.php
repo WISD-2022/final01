@@ -11,16 +11,19 @@
             @method('PATCH')
             @csrf
             <div class="from-group">
-                <label for="title" class="form-label">老師名字： </label>
+                <label for="name" class="form-label">老師名字： </label>
                 <input id="name" name="name" value="{{old('name',$staffs[0]->name)}}">
 
                 <p></p>
-                <label for="content" class="form-label">介紹: </label>
+                <label for="introduce" class="form-label">介紹: </label>
                 <textarea id="introduce" name="introduce" class="form-control" rows="10">{{old('introduce',$staffs[0]->introduce)}}</textarea>
 
                 <p></p>
-                <label for="content" class="form-label">上傳圖檔: </label>
-                <input id="img_path" name="img_path" value="{{old('img_path',$staffs[0]->img_path)}}">
+                <label for="image" class="form-label">上傳圖檔: </label>
+                <div class="form-group">
+                    <input type="file" name="image" accept="image/*" value="{{old('img_path',$staffs[0]->img_path)}}">
+                </div>
+{{--                <input id="img_path" name="img_path" value="{{old('img_path',$staffs[0]->img_path)}}">--}}
                 <!--<label action="@{{route('flight.upload')}}" class="form-label">上傳圖片檔案:  </label>
                 <form action="@{{route('flight.upload')}}" method="post" enctype="multipart/form-data">
 {{--                    @csrf--}}

@@ -24,7 +24,7 @@
                     <td style="text-align: left">{{$reserves->id}}</td>
                     <td style="text-align: left">{{$reserves->class_name}}</td>
                     <td style="text-align: left;width: 10%">{{$reserves->name}}</td>
-                    <td style="text-align: right;width: 10%">{{$reserves->date}},{{$reserves->str_time}}-{{$reserves->end_time}}</td>
+                    <td style="text-align: right;width: 10%">{{$reserves->date}},{{$reserves->str_time}}</td>
                     <td style="text-align: right;width: 10%">
                         <a class="btn btn-secondary" href="">修改</a>
                         <form action="" method="POST">

@@ -18,15 +18,9 @@
 
                 <p></p>
                 <label for="content" class="form-label">上傳圖檔: </label>
-                <input id="img_path" name="img_path" placeholder="假裝圖檔路徑">
-                <!--<label action="@{{route('flight.upload')}}" class="form-label">上傳圖片檔案:  </label>
-                <form action="@{{route('flight.upload')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-2">
-                        <input type="file" name="photo" accept="image/*">
-                    </div>
-                    <button class="btn btn-info" type="submit">Save Photo</button>
-                </form>-->
+                <div class="form-group">
+                    <input type="file" name="image" accept="image/*">
+                </div>
             </div>
 
             <div class="text-right">

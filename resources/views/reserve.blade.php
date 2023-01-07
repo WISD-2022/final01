@@ -13,7 +13,6 @@
                 <th scope="col" style="text-align: left">課程名稱</th>
                 <th scope="col" style="text-align: left" >預約日期</th>
                 <th scope="col" style="text-align: left">開始時間</th>
-                <th scope="col" style="text-align: left" >結束時間</th>
             </tr>
             </thead>
             <tbody>
@@ -25,7 +24,6 @@
                     <td style="text-align: left">{{$users->class_name}}</td>
                     <td style="text-align: left">{{$users->date}}</td>
                     <td style="text-align: left">{{$users->str_time}}</td>
-                    <td style="text-align: left">{{$users->end_time}}</td>
                     <td style="text-align: right;width: 10%">
 
                         <form action="{{ route('reserves.destroy',$users->id) }}" method="POST">
