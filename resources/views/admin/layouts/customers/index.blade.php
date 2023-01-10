@@ -18,8 +18,8 @@
                     <td style="text-align: left">{{$customers->name}}</td>
                     <td style="text-align: left;width: 10%">{{$customers->email}}</td>
                 </tr>
-            </tbody>
             @endforeach
+            </tbody>
         </table>
 
 

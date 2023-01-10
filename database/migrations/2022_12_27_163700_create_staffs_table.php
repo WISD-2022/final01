@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('staff_name',10);
             $table->text('introduce');
-            $table->text('img_path');
+            //$table->text('img_path');
             //$table->int('ismember');
             $table->timestamps();
         });

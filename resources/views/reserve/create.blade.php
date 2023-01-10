@@ -31,6 +31,7 @@
             <br>
             <label for='ter' class="form-label">指定老師: </label>
             <select class="custom-select" id="ter" name="ter">
+                <option value="999999">不指定</option>
                 @foreach($t as $key => $t)
                     <option value="{{$t->id}}">{{$t->staff_name}}</option>
                 @endforeach
