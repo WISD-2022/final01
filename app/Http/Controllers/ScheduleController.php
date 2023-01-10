@@ -42,7 +42,7 @@ class ScheduleController extends Controller
     public function create()
     {
         if (Auth::check()) {
-            if (Auth::user()->ismenber == '0') {
+            if (Auth::user()->ismember == '0') {
                 $data = DB::table('staffs')->get();
                 return view('admin.layouts.schedules.create', ['schedules' => $data]);
             } else {
