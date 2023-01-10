@@ -28,11 +28,7 @@ class ClassesReserveController extends Controller
                 ->join('staffs','staffs.id','=','ter_id')
                 ->join('classes','classes.id','=','class_id')
                 ->get();
-            $reserve=['id'=>$id,'users'=>$users];
-            $now=printf(Carbon::now()->toDateString());
-//            dd($now);
-//        return view('admin.layouts.reserve.index',['reserves'=>$data]);
-            return view('reserve')->with(['users'=>$users,'id'=>$id,'now'=>$now]);
+            return view('reserve')->with(['users'=>$users,'id'=>$id]);
         }
         else{
             return redirect()->route('login')->with('alert', '請登入!');

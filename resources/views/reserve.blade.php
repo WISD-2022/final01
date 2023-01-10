@@ -6,7 +6,6 @@
     <div class="container-fluid px-4">
 
         <h1 class="mt-4">預約紀錄</h1>
-{{--        $now=printf("Now: %s", Carbon::now());--}}
         <table class="table">
             <thead>
             <tr>
@@ -19,7 +18,6 @@
             </tr>
             </thead>
             <tbody>
-{{--            @dd($user)--}}
             @foreach($users as $key => $users)
                 <tr>
                     <!--<th scope="col">標題</th>-->
@@ -34,14 +32,12 @@
                         <form action="{{ route('reserves.destroy',$id[$key]->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
-{{--                            @dump($now)--}}
                             @if($users->status=="未完成")
                             {{method_field('DELETE')}}
                             {{csrf_field()}}
                             <button class="btn btn-danger">取消</button>
                             @endif
 
-{{--                            @dump($users->date)--}}
                         </form>
                     </td>
                 </tr>
