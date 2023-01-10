@@ -17,7 +17,7 @@ class StaffsController extends Controller
      */
     public function index()
     {
-        $data = DB::table('staffs')->get();
+        $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
         return view('staffs.index', ['staffs' => $data]);
     }
 
