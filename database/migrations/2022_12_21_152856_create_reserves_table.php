@@ -25,6 +25,7 @@ return new class extends Migration
             $table->time('str_time');
             //$table->time('end_time');
             $table->timestamps();
+            $table->string('status')->default('未完成');
         });
     }
 

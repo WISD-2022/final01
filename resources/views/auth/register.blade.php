@@ -14,16 +14,6 @@
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
-            <div>
-                <x-jet-label for="birth" value="{{ __('Birthday') }}" />
-                <x-jet-input id="birth" class="block mt-1 w-full" type="date" name="birth" />
-            </div>
-
-            <div>
-                <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
-                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" />
-            </div>
-
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />

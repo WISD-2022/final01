@@ -28,12 +28,12 @@
                     <td style="text-align: left">{{$users->staff_name}}</td>
                     <td style="text-align: right;width: 10%">
 
-                        <form action="{{ route('reserves.destroy',$users->id) }}" method="POST">
+                        <form action="{{ route('reserves.destroy',$id[$key]->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             {{method_field('DELETE')}}
                             {{csrf_field()}}
-                            <button class="btn btn-danger" type="submit">取消</button>
+                            <button class="btn btn-danger">取消</button>
                         </form>
                     </td>
                 </tr>
