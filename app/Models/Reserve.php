@@ -15,7 +15,8 @@ class Reserve extends Model
         'str_time',
         'pay',
         //'end_time',
-        'id'
+        'id',
+        'status',
 
     ];
     use HasFactory;

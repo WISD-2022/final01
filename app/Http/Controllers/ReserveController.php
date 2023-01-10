@@ -30,7 +30,8 @@ class ReserveController extends Controller
             ->join('classes','classes.id','=','class_id')
             ->join('users','users.id','=','user_id')
             ->get();
-        return view('admin.layouts.reserve.index',['reserves'=>$data]);
+        $data2 = DB::table('reserves')->get();
+        return view('admin.layouts.reserve.index',['reserves'=>$data,'reserves_id'=>$data2]);
     }
 
     /**
@@ -79,7 +80,14 @@ class ReserveController extends Controller
      */
     public function edit(Reserve $reserve)
     {
-        //
+        $data = DB::table('reserves')
+            ->where('reserves.id',$reserve->id)
+            ->join('users','users.id','=','user_id')
+            ->get();
+        $data2 = DB::table('reserves')
+            ->where('reserves.id',$reserve->id)
+            ->get();
+        return view('admin.layouts.reserve.edit',['reserves' => $data,'id'=>$data2]);
     }
 
     /**
@@ -91,7 +99,10 @@ class ReserveController extends Controller
      */
     public function update(UpdateReserveRequest $request, Reserve $reserve)
     {
-        //
+        $reserve->update([
+            'status'=> $request->wml
+        ]);
+        return redirect()->route('admin.reserves.index')->with('alert','更新成功!');
     }
 
     /**

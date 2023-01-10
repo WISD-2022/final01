@@ -20,7 +20,7 @@
                 <tr>
                     <td style="text-align: left">{{$staffs->staff_name}}</td>
                     <td style="text-align: left">{{$staffs->introduce}}</td>
-                    <td style="text-align: center"><img src="{{asset('images/'.$staffs->image)}}"></td>
+                    <td style="text-align: center"><img src="{{asset('images/'.$staffs->image)}}" width="500"></td>
                     <td style="text-align: right;width: 10%">
                         <a class="btn btn-secondary" href="{{ route('admin.staffs.edit',$staffs->id) }}">修改</a>
                     </td>

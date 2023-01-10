@@ -24,7 +24,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('index');
-Route::get('/dashboard',[HomeController::class,'index'])->name('index');
+//Route::get('/dashboard',[HomeController::class,'index'])->name('index');
 #查看美甲師
 Route::get('staffs',[StaffsController::class,'index'])->name('staffs.index');
 #查看課程
@@ -78,6 +78,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('classes/{class}',[ClassesController::class,'destroy'])->name('classes.destroy');
     #後台瀏覽所有預約
     Route::get('reserves',[ReserveController::class,'admin_index'])->name('reserves.index');
+    #修改預約狀態
+    Route::get('reserves/{reserve}/edit',[ReserveController::class,'edit'])->name('reserves.edit');
+    Route::patch('reserves/{reserve}',[ReserveController::class,'update'])->name('reserves.update');
 
     #查看顧客資料
     Route::get('customers',[UserController::class,'index'])->name('customers.index');
@@ -85,7 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 
-/*Route::middleware([
+Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -93,7 +96,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('index');
     })->name('index');
-});*/
+});
 
 
 //Route::resource('staffs',StaffsController::class);

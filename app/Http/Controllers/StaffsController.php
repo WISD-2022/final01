@@ -32,8 +32,8 @@ class StaffsController extends Controller
             $data = DB::table('staffs')->get();
             return view('staffs.index', ['staffs' => $data]);
         }
-
     }
+
 
 
     /**
