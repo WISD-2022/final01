@@ -14,23 +14,23 @@
 ## ◆會員 預約課程
 - 選擇課程後點擊預約，顯示所預約課程名稱以及課程金額，選擇預約日期時間及美甲老師
   <a href="https://imgur.com/qsbLoUi"/><img src="https://imgur.com/qsbLoUi.png" title="source: imgur.com" /></a>
-## ◆查看預約紀錄
+## ◆會員 查看預約紀錄
 - 查看預約紀錄，並可取消預約
   <a href="https://imgur.com/ekJX6hw"/><img src="https://imgur.com/ekJX6hw.png" title="source: imgur.com" /></a>
 
-## ◆後台老師管理
+## ◆後台 老師管理
 - 管理美甲老師，並可查看、新增、刪除、修改老師資料
   <a href="https://imgur.com/RUEqR6u"/><img src="https://imgur.com/RUEqR6u.png" title="source: imgur.com" /></a>
-## ◆後台課程管理
+## ◆後台 課程管理
 - 管理課程，並可查看、新增、刪除、修改課程資料
   <a href="https://imgur.com/MBrm4fk"/><img src="https://imgur.com/MBrm4fk.png" title="source: imgur.com" /></a>
-## ◆後台排班管理
+## ◆後台 排班管理
 - 管理排班，並可查看、新增、刪除、修改排班資料
   <a href="https://imgur.com/rMhMr77"/><img src="https://imgur.com/rMhMr77.png" title="source: imgur.com" /></a>
-## ◆後台查看預約紀錄
-- 查看預約紀錄
+## ◆後台 查看預約紀錄
+- 查看預約紀錄，並更改預約狀態，使會員不可點擊取消預約
   <a href="https://imgur.com/fQq2Tow"/><img src="https://imgur.com/fQq2Tow.png" title="source: imgur.com" /></a>
-## ◆後台查看會員資料
+## ◆後台 查看會員資料
 - 查看會員基本資料
   <a href="https://imgur.com/poteEsJ"/><img src="https://imgur.com/poteEsJ.png" title="source: imgur.com" /></a>
 
