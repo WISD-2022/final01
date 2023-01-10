@@ -18,13 +18,19 @@ class ClassesReserveController extends Controller
      */
     public function index()
     {
-        //$users = Reserve::all();
-        $users = DB::table('reserves')
-            ->join('staffs','staffs.id','=','ter_id')
-            ->join('classes','classes.id','=','class_id')
-            ->get();
+        if(Auth::check()) {
+            $users = DB::table('reserves')
+                ->join('staffs','staffs.id','=','ter_id')
+                ->join('classes','classes.id','=','class_id')
+                ->get();
 //        return view('admin.layouts.reserve.index',['reserves'=>$data]);
-       return view('reserve')->with(['users'=>$users]);
+            return view('reserve')->with(['users'=>$users]);
+        }
+        else{
+            return redirect()->route('index')->with('alert', '請登入!');
+        }
+        //$users = Reserve::all();
+
     }
 
     /**

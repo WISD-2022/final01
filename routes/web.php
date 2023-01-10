@@ -47,8 +47,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('staffs/create', [StaffsController::class, 'create'])->name("staffs.create");
     Route::post('staffs', [StaffsController::class, 'store'])->name("staffs.store");
     #上傳圖檔
-    Route::get('flight/file', [FlightController::class, 'file'])->name("flight.file");
-    Route::post('flight/upload', [FlightController::class, 'upload'])->name("flight.upload");
+    //Route::get('flight/file', [FlightController::class, 'file'])->name("flight.file");
+    //Route::post('flight/upload', [FlightController::class, 'upload'])->name("flight.upload");
     #修改老師
     Route::get('staffs/{staffs}/edit', [StaffsController::class, 'edit'])->name("staffs.edit");
     Route::patch('staffs/{staffs}', [StaffsController::class, 'update'])->name("staffs.update");

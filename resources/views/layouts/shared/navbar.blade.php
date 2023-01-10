@@ -13,15 +13,21 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">登入</a></li>
                     <li class="nav-item"><a  class="nav-link"href="{{ url('/register') }}">註冊</a></li>
                 @else
-                    <li class=" nav-item dropdown">
-                        <a href="#" class=" nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="nav-item"><a  class="nav-link" href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out">Logout</i></a></li>
-                        </ul>
-                    </li>
+                    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                        <li class="nav-item dropdown">
+                            <a href="#" class=" nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <form method="POST" action="{{route(('logout'))}}">
+                                        @csrf
+                                    <button  class="dropdown-item" type="submit">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 @endif
                 <!--
                 <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">登入</a></li>
