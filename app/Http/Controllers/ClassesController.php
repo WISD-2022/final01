@@ -17,13 +17,15 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        if(Auth::check()) {
+        $data = DB::table('classes')->get();
+        return view('class.index', ['classes' => $data]);
+        /*if(Auth::check()) {
             $data = DB::table('classes')->get();
             return view('class.index', ['classes' => $data]);
         }
         else{
             return redirect()->route('index')->with('alert', '請登入!');
-        }
+        }*/
 
     }
 

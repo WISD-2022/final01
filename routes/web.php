@@ -24,7 +24,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('index');
-
+Route::get('/dashboard',[HomeController::class,'index'])->name('index');
 #查看美甲師
 Route::get('staffs',[StaffsController::class,'index'])->name('staffs.index');
 #查看課程

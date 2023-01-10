@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\Reserve;
 use App\Models\Staffs;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Table;
 
 
 class ClassesReserveController extends Controller
@@ -19,12 +21,15 @@ class ClassesReserveController extends Controller
     public function index()
     {
         if(Auth::check()) {
-            $users = DB::table('reserves')
+            $user_id=Auth::user()->id;
+            $id = DB::table('reserves')->where('user_id',$user_id)->get();
+            $users = DB::table('reserves')->where('user_id',$user_id)
                 ->join('staffs','staffs.id','=','ter_id')
                 ->join('classes','classes.id','=','class_id')
                 ->get();
+            $reserve=['id'=>$id,'users'=>$users];
 //        return view('admin.layouts.reserve.index',['reserves'=>$data]);
-            return view('reserve')->with(['users'=>$users]);
+            return view('reserve')->with(['users'=>$users,'id'=>$id]);
         }
         else{
             return redirect()->route('index')->with('alert', '請登入!');
