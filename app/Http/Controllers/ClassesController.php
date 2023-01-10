@@ -54,7 +54,7 @@ class ClassesController extends Controller
     public function create()
     {
         if (Auth::check()) {
-            if (Auth::user()->ismenber == '0') {
+            if (Auth::user()->ismember == '0') {
                 return view('admin.layouts.classes.create');
             } else {
                 return redirect()->route('index')->with('alert', '請登入管理者帳號!');

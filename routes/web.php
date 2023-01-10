@@ -24,7 +24,6 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('index');
-Route::get('/dashboard',[HomeController::class,'index'])->name('index');
 //Route::get('/dashboard',[HomeController::class,'index'])->name('index');
 #查看美甲師
 Route::get('staffs',[StaffsController::class,'index'])->name('staffs.index');
@@ -87,15 +86,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 
-/*Route::middleware([
+Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/', function () {
-        return view('index');
-    })->name('index');
-});*/
+    Route::get('/',[HomeController::class,'index'])->name('index');
+});
 
 
 //Route::resource('staffs',StaffsController::class);
