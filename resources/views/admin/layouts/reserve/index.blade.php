@@ -10,6 +10,7 @@
             <thead>
             <tr>
                 <!--<th scope="col">標題</th>-->
+                <th scope="col" style="text-align: left;width: 10%">預約編號</th>
                 <th scope="col" style="text-align: center;width: 10%">顧客姓名</th>
                 <th scope="col" style="text-align: center;width: 15%" >課程名稱</th>
                 <th scope="col" style="text-align: center;width: 15%">老師</th>
@@ -19,16 +20,17 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($reserves as $reserves)
+            @foreach($reserves as $key=>$reserves)
                 <tr>
                     <!--<th scope="col">標題</th>-->
+                    <td style="text-align: left">{{$reserves_id[$key]->id}}</td>
                     <td style="text-align: center">{{$reserves->name}}</td>
                     <td style="text-align: center">{{$reserves->class_name}}</td>
                     <td style="text-align: center;width: 10%">{{$reserves->staff_name}}</td>
                     <td style="text-align: center;width: 10%">{{$reserves->date}},{{$reserves->str_time}}</td>
                     <td style="text-align: center;width: 10%">{{$reserves->status}}</td>
                     <td style="text-align: center;width: 10%">
-                        <a class="btn btn-secondary" href="">修改</a>
+                        <a class="btn btn-secondary" href="{{route('admin.reserves.edit',$reserves_id[$key]->id)}}">修改</a>
                     </td>
                 </tr>
             @endforeach

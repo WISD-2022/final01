@@ -78,6 +78,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('classes/{class}',[ClassesController::class,'destroy'])->name('classes.destroy');
     #後台瀏覽所有預約
     Route::get('reserves',[ReserveController::class,'admin_index'])->name('reserves.index');
+    #修改預約狀態
+    Route::get('reserves/{reserve}/edit',[ReserveController::class,'edit'])->name('reserves.edit');
+    Route::patch('reserves/{reserve}',[ReserveController::class,'update'])->name('reserves.update');
 
     #查看顧客資料
     Route::get('customers',[UserController::class,'index'])->name('customers.index');
