@@ -18,15 +18,16 @@ class StaffsController extends Controller
     public function index()
     {
         $data = DB::table('staffs')->get();
-        return view('staffs.index',['staffs' => $data]);
+        return view('staffs.index', ['staffs' => $data]);
     }
 
     public function admin_index()
     {
-        $data = DB::table('staffs')->get();
-        return view('admin.layouts.staffs.index',['staffs' => $data]);
+        $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
+        return view('admin.layouts.staffs.index', ['staffs' => $data]);
 
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,28 +41,26 @@ class StaffsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreStaffsRequest  $request
+     * @param \App\Http\Requests\StoreStaffsRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreStaffsRequest $request)
     {
         Staffs::create([
-            'staff_name'=>$request->name,
-            'introduce'=>$request->introduce,
-            'img_path'=> $request->image,
+            'staff_name' => $request->name,
+            'introduce' => $request->introduce,
         ]);
-       if($request->has('image')) {
+        if ($request->has('image')) {
             //影像圖檔-自訂檔案名稱
-            $imageName = $request->id.'_'.time().'.'.$request->image->extension();
+            $imageName = $request->name . '_' . time() . '.' . $request->image->extension();
             //把檔案存到公開的資料夾
-           $file_path = $request->image->move(public_path('images'), $imageName);
+            $file_path = $request->image->move(public_path('images'), $imageName);
+            $id = DB::table('staffs')->where('staff_name', $request->name)->get();
             Image::create([
-                'image'=>$imageName,
-                'ter_id'=>$request->id,
+                'image' => $imageName,
+                'ter_id' => $id[0]->id
             ]);
-        Staffs::create([
-            'img_path'=> $file_path,
-        ]);}
+        }
         return redirect()->route('admin.staffs.index');
     }
 
@@ -69,7 +68,7 @@ class StaffsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Staffs  $staffs
+     * @param \App\Models\Staffs $staffs
      * @return \Illuminate\Http\Response
      */
     public function show(Staffs $staffs)
@@ -80,37 +79,37 @@ class StaffsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Staffs  $staffs
+     * @param \App\Models\Staffs $staffs
      * @return \Illuminate\Http\Response
      */
     public function edit(Staffs $staffs)
     {
-        $data =Staffs::find($staffs);
-        return view('admin.layouts.staffs.edit',['staffs' => $data]);
+        $data = Staffs::find($staffs);
+        return view('admin.layouts.staffs.edit', ['staffs' => $data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateStaffsRequest  $request
-     * @param  \App\Models\Staffs  $staffs
+     * @param \App\Http\Requests\UpdateStaffsRequest $request
+     * @param \App\Models\Staffs $staffs
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateStaffsRequest $request, Staffs $staffs) //$staffs 對應到路由{$staffs}
     {
         $data = Staffs::find($staffs);
         $staffs->update([
-            'staff_name'=>$request->name,
-            'introduce'=>$request->introduce,
-            'img_path'=>$request->image,
+            'staff_name' => $request->name,
+            'introduce' => $request->introduce,
+            'img_path' => $request->image,
         ]);
-        return redirect()->route('admin.staffs.index')->with('alert','更新成功!');
+        return redirect()->route('admin.staffs.index')->with('alert', '更新成功!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Staffs  $staffs
+     * @param \App\Models\Staffs $staffs
      * @return \Illuminate\Http\Response
      */
     public function destroy(Staffs $staffs)
