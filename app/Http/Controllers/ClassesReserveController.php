@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Table;
+use Carbon\Carbon;
 
 
 class ClassesReserveController extends Controller
@@ -28,8 +29,10 @@ class ClassesReserveController extends Controller
                 ->join('classes','classes.id','=','class_id')
                 ->get();
             $reserve=['id'=>$id,'users'=>$users];
+            $now=printf(Carbon::now()->toDateString());
+//            dd($now);
 //        return view('admin.layouts.reserve.index',['reserves'=>$data]);
-            return view('reserve')->with(['users'=>$users,'id'=>$id]);
+            return view('reserve')->with(['users'=>$users,'id'=>$id,'now'=>$now]);
         }
         else{
             return redirect()->route('index')->with('alert', '請登入!');
