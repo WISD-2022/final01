@@ -18,7 +18,7 @@
                     <tbody>
                     @foreach($schedules as $key=>$schedule)
                         <tr>
-                            <td style="text-align: left">{{$schedule->name}}</td>
+                            <td style="text-align: left">{{$schedule->staff_name}}</td>
                             <td style="text-align: left">{{$schedule->week}}</td>
                             <td style="text-align: left">{{$schedule->str_time}}</td>
                             <td style="text-align: left">{{$schedule->end_time}}</td>

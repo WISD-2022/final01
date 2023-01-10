@@ -33,7 +33,7 @@
             <select class="custom-select" id="ter" name="ter">
                 <option value="999999999">不指定</option>
                 @foreach($t as $key => $t)
-                    <option value="{{$t->id}}">{{$t->name}}</option>
+                    <option value="{{$t->id}}">{{$t->staff_name}}</option>
                 @endforeach
             </select>
             <p>

@@ -16,9 +16,9 @@
             </thead>
 
             <tbody>
-            @foreach($staffs as $staffs)
+            @foreach($staffs as $staffs) 
                 <tr>
-                    <td style="text-align: left">{{$staffs->name}}</td>
+                    <td style="text-align: left">{{$staffs->staff_name}}</td>
                     <td style="text-align: left">{{$staffs->introduce}}</td>
                     <td style="text-align: left">{{$staffs->img_path}}</td>
                     <td style="text-align: right;width: 10%">

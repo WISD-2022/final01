@@ -12,7 +12,7 @@
                     <select id='staffselect' name="ter_id">
                     @foreach($schedules as $key=>$schedule)<!--$key 表示$schedule 陣列索引-->
 
-                        <option value="{{$schedule->id}}">{{$schedule->name}}</option>
+                        <option value="{{$schedule->id}}">{{$schedule->staff_name}}</option>
                     @endforeach
                     </select>
                 <br>

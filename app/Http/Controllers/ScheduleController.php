@@ -43,7 +43,7 @@ class ScheduleController extends Controller
      */
     public function store(StoreScheduleRequest $request)
     {
-        $ter_id = Staffs::where('name', $request->staffselect)->get();
+        $ter_id = Staffs::where('staff_name', $request->staffselect)->get();
         Schedule::create([
             'ter_id' => $request->staffselect,
             'week' => $request->week,

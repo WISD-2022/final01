@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
-            $table->string('name',10);
+            $table->string('staff_name',10);
             $table->text('introduce');
             $table->text('img_path');
             //$table->int('ismember');

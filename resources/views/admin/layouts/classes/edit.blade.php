@@ -39,9 +39,9 @@
                         <label class="input-group-text">課程時間</label>
                     </div>
                     <select class="custom-select" name="time">
-                        <option selected>00:30:00</option>
-                        <option value="1">01:00:00</option>
-                        <option value="2">02:00:00</option>
+                        <option>00:30:00</option>
+                        <option>01:00:00</option>
+                        <option>02:00:00</option>
                     </select>
                 </div>
             </div>

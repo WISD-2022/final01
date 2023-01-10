@@ -6,7 +6,6 @@ use App\Models\Staffs;
 use App\Http\Requests\StoreStaffsRequest;
 use App\Http\Requests\UpdateStaffsRequest;
 use Illuminate\Support\Facades\DB;
-use App\Models\Image;
 
 class StaffsController extends Controller
 {
@@ -46,7 +45,7 @@ class StaffsController extends Controller
     public function store(StoreStaffsRequest $request)
     {
         Staffs::create([
-            'name'=>$request->name,
+            'staff_name'=>$request->name,
             'introduce'=>$request->introduce,
             'img_path'=> $request->image,
         ]);
@@ -100,7 +99,7 @@ class StaffsController extends Controller
     {
         $data = Staffs::find($staffs);
         $staffs->update([
-            'name'=>$request->name,
+            'staff_name'=>$request->name,
             'introduce'=>$request->introduce,
             'img_path'=>$request->image,
         ]);

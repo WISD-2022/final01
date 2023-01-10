@@ -28,6 +28,7 @@ class ReserveController extends Controller
         $data = DB::table('reserves')
             ->join('staffs','staffs.id','=','ter_id')
             ->join('classes','classes.id','=','class_id')
+            ->join('users','users.id','=','user_id')
             ->get();
         return view('admin.layouts.reserve.index',['reserves'=>$data]);
     }

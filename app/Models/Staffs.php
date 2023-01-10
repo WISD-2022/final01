@@ -10,7 +10,7 @@ class Staffs extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'name',
+        'staff_name',
         'introduce',
         'img_path',
     ];

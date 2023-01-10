@@ -12,7 +12,7 @@
             @csrf
             <div class="from-group">
                 <label for="name" class="form-label">老師名字： </label>
-                <input id="name" name="name" value="{{old('name',$staffs[0]->name)}}">
+                <input id="name" name="name" value="{{old('name',$staffs[0]->staff_name)}}">
 
                 <p></p>
                 <label for="introduce" class="form-label">介紹: </label>
