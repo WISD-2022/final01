@@ -101,7 +101,7 @@ class ClassesController extends Controller
     public function edit(Classes $class)
     {
         if (Auth::check()) {
-            if (Auth::user()->ismenber == '0') {
+            if (Auth::user()->ismember == '0') {
                 $data = Classes::find($class);
                 //dd($data);
                 return view('admin.layouts.classes.edit', ['classes' => $data]);

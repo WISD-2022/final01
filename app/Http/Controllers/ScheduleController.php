@@ -93,7 +93,7 @@ class ScheduleController extends Controller
     {
 
         if (Auth::check()) {
-            if (Auth::user()->ismenber == '0') {
+            if (Auth::user()->ismember == '0') {
                 $id = Schedule::find($schedule);
                 $data = DB::table('staffs')->get();
                 return view('admin.layouts.schedules.edit',['schedules' => $data,'id'=>$id]);
