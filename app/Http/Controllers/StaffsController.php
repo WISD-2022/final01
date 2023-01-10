@@ -6,6 +6,7 @@ use App\Models\Staffs;
 use App\Models\Image;
 use App\Http\Requests\StoreStaffsRequest;
 use App\Http\Requests\UpdateStaffsRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class StaffsController extends Controller
@@ -17,16 +18,23 @@ class StaffsController extends Controller
      */
     public function index()
     {
-        $data = DB::table('staffs')->get();
-        return view('staffs.index', ['staffs' => $data]);
+        if(Auth::check()){
+            if (Auth::user()->ismember == '0') {
+                $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
+                return view('admin.layouts.staffs.index', ['staffs' => $data]);
+            }
+            else{
+                $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
+                return view('staffs.index', ['staffs' => $data]);
+            }
+        }
+        else{
+            $data = DB::table('staffs')->get();
+            return view('staffs.index', ['staffs' => $data]);
+        }
+
     }
 
-    public function admin_index()
-    {
-        $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
-        return view('admin.layouts.staffs.index', ['staffs' => $data]);
-
-    }
 
     /**
      * Show the form for creating a new resource.

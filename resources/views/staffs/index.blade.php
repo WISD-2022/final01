@@ -22,7 +22,7 @@
                     <!--<th scope="col">標題</th>-->
                     <td style="text-align: left">{{$staffs->staff_name}}</td>
                     <td style="text-align: left">{{$staffs->introduce}}</td>
-                    <td style="text-align: left;width: 10%">{{$staffs->img_path}}</td>
+                    <td style="text-align: left;width: 10%"><img src="{{asset('images/'.$staffs->image)}}"></td>
 
                 </tr>
             @endforeach

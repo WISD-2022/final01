@@ -17,8 +17,16 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        $data = DB::table('classes')->get();
-        return view('class.index', ['classes' => $data]);
+        if(Auth::check()) {
+            if (Auth::user()->ismember == '0') {
+                $data = DB::table('classes')->get();
+                return view('admin.layouts.classes.index',['classes' => $data]);
+            }
+        }
+        else{
+            $data = DB::table('classes')->get();
+            return view('class.index', ['classes' => $data]);
+        }
         /*if(Auth::check()) {
             $data = DB::table('classes')->get();
             return view('class.index', ['classes' => $data]);
@@ -29,12 +37,6 @@ class ClassesController extends Controller
 
     }
 
-    public function admin_index()
-    {
-        $data = DB::table('classes')->get();
-        return view('admin.layouts.classes.index',['classes' => $data]);
-
-    }
     /**
      * Show the form for creating a new resource.
      *
