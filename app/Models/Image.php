@@ -5,16 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Staffs extends Model
+class Image extends Model
 {
     use HasFactory;
-    public function images()
+    protected $table = 'images';
+
+    public function staffs()
     {
-        return $this->hasMany(Image::class);
+        return $this->belongsTo(Staffs::class);
     }
+
     protected $fillable = [
         'id',
-        'staff_name',
-        'introduce',
+        'image',
+        'ter_id',
     ];
 }
