@@ -62,7 +62,7 @@ class ClassesReserveController extends Controller
             'class_id'=>$class,
             'date'=>$request->date,
             'str_time'=>$request->str_time,
-            'end_time'=>$request->end_time,
+//            'end_time'=>$request->end_time,
         ]);
         $users = Reserve::all();
 //        redirect()->route('classes.index')
