@@ -15,6 +15,7 @@
                 <th scope="col" style="text-align: left" >預約日期</th>
                 <th scope="col" style="text-align: left">開始時間</th>
                 <th scope="col" style="text-align: left">老師</th>
+                <th scope="col" style="text-align: left">狀態</th>
             </tr>
             </thead>
             <tbody>
@@ -27,18 +28,20 @@
                     <td style="text-align: left">{{$users->date}}</td>
                     <td style="text-align: left">{{$users->str_time}}</td>
                     <td style="text-align: left">{{$users->staff_name}}</td>
+                    <td style="text-align: left">{{$users->status}}</td>
+
                     <td style="text-align: right;width: 10%">
                         <form action="{{ route('reserves.destroy',$id[$key]->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            @dump($now)
-                            @if($now->lt($users->date))
+{{--                            @dump($now)--}}
+                            @if($users->status=="未完成")
                             {{method_field('DELETE')}}
                             {{csrf_field()}}
                             <button class="btn btn-danger">取消</button>
                             @endif
 
-                            @dump($users->date)
+{{--                            @dump($users->date)--}}
                         </form>
                     </td>
                 </tr>
