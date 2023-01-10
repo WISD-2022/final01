@@ -18,6 +18,9 @@ class HomeController extends Controller
             if (Auth::user()->ismember == '0') {
                 return view('admin.layouts.dashboard.index');
             }
+            else{
+                return view('index');
+            }
         }
         else{
             return view('index');

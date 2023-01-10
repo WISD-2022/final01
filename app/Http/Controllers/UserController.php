@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,8 +16,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = DB::table('users')->get();
-        return view('admin.layouts.customers.index',['customers' => $data]);
+        if (Auth::check()) {
+            if (Auth::user()->ismember == '0') {
+                $data = DB::table('users')->get();
+                return view('admin.layouts.customers.index',['customers' => $data]);
+            } else {
+                return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+            }
+        } else {
+            return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+        }
+
     }
 
     /**

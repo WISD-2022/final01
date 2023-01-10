@@ -24,6 +24,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('index');
+Route::get('/dashboard',[HomeController::class,'index'])->name('index');
 //Route::get('/dashboard',[HomeController::class,'index'])->name('index');
 #查看美甲師
 Route::get('staffs',[StaffsController::class,'index'])->name('staffs.index');
@@ -38,11 +39,9 @@ Route::delete('reserves/{reserve}',[ClassesReserveController::class,'destroy'])-
 Route::get('reserves',[ClassesReserveController::class,'index'])->name('reserve');
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    #後台首頁
-    Route::get('/', [AdminController::class, 'index'])->name("index");
-
+    Route::get('/',[HomeController::class,'index'])->name('index');
     #老師管理首頁
-    Route::get('staffs', [StaffsController::class, 'index'])->name("staffs.index");
+    Route::get('staffs', [StaffsController::class, 'admin_index'])->name("staffs.index");
     #新增老師
     Route::get('staffs/create', [StaffsController::class, 'create'])->name("staffs.create");
     Route::post('staffs', [StaffsController::class, 'store'])->name("staffs.store");
@@ -67,7 +66,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('schedules/{schedule}', [ScheduleController::class, 'destroy'])->name("schedules.destroy");
 
     #課程管理
-    Route::get('classes', [ClassesController::class, 'index'])->name("classes.index");
+    Route::get('classes', [ClassesController::class, 'admin_index'])->name("classes.index");
     #新增課程
     Route::get('classes/create',[ClassesController::class,'create'])->name("classes.create");
     Route::post('classes',[ClassesController::class,'store'])->name('classes.store');
@@ -88,7 +87,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 
-Route::middleware([
+/*Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -96,7 +95,7 @@ Route::middleware([
     Route::get('/', function () {
         return view('index');
     })->name('index');
-});
+});*/
 
 
 //Route::resource('staffs',StaffsController::class);

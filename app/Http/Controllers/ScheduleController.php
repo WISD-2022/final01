@@ -7,6 +7,7 @@ use App\Models\Staffs;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
@@ -17,11 +18,20 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $data = DB::table('schedules')
-                ->join('staffs','staffs.id','=','ter_id')
-                ->get();
-        $schedules_sid = DB::table('schedules')->get();
-        return view('admin.layouts.schedules.index', ['schedules' => $data,'schedules_sid' => $schedules_sid]);
+        if (Auth::check()) {
+            if (Auth::user()->ismember == '0') {
+                $data = DB::table('schedules')
+                    ->join('staffs','staffs.id','=','ter_id')
+                    ->get();
+                $schedules_sid = DB::table('schedules')->get();
+                return view('admin.layouts.schedules.index', ['schedules' => $data,'schedules_sid' => $schedules_sid]);
+            } else {
+                return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+            }
+        } else {
+            return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+        }
+
     }
 
     /**
@@ -31,8 +41,17 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        $data = DB::table('staffs')->get();
-        return view('admin.layouts.schedules.create', ['schedules' => $data]);
+        if (Auth::check()) {
+            if (Auth::user()->ismenber == '0') {
+                $data = DB::table('staffs')->get();
+                return view('admin.layouts.schedules.create', ['schedules' => $data]);
+            } else {
+                return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+            }
+        } else {
+            return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+        }
+
     }
 
     /**
@@ -73,9 +92,18 @@ class ScheduleController extends Controller
     public function edit(Schedule $schedule)
     {
 
-        $id = Schedule::find($schedule);
-        $data = DB::table('staffs')->get();
-        return view('admin.layouts.schedules.edit',['schedules' => $data,'id'=>$id]);
+        if (Auth::check()) {
+            if (Auth::user()->ismenber == '0') {
+                $id = Schedule::find($schedule);
+                $data = DB::table('staffs')->get();
+                return view('admin.layouts.schedules.edit',['schedules' => $data,'id'=>$id]);
+            } else {
+                return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+            }
+        } else {
+            return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+        }
+
 
     }
 

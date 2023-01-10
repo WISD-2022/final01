@@ -35,7 +35,7 @@ class ClassesReserveController extends Controller
             return view('reserve')->with(['users'=>$users,'id'=>$id,'now'=>$now]);
         }
         else{
-            return redirect()->route('index')->with('alert', '請登入!');
+            return redirect()->route('login')->with('alert', '請登入!');
         }
         //$users = Reserve::all();
 
@@ -48,15 +48,19 @@ class ClassesReserveController extends Controller
      */
     public function create($class)
     {
-        $classes = Classes::where('id',$class)->get();
-        $t = Staffs::all();
-        //            'order_date' => $orders,
-//dd($t);
-        $data = [
-            'classes'=>$classes,
-            't'=>$t
-        ];
-        return view('reserve.create',$data);
+        if(Auth::check()) {
+            $classes = Classes::where('id',$class)->get();
+            $t = Staffs::all();
+            $data = [
+                'classes'=>$classes,
+                't'=>$t
+            ];
+            return view('reserve.create',$data);
+        }
+        else{
+            return redirect()->route('login')->with('alert', '請登入!');
+        }
+
     }
 
     /**

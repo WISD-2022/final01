@@ -6,9 +6,8 @@ use App\Models\Staffs;
 use App\Models\Image;
 use App\Http\Requests\StoreStaffsRequest;
 use App\Http\Requests\UpdateStaffsRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class StaffsController extends Controller
 {
     /**
@@ -18,23 +17,23 @@ class StaffsController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
+        return view('staffs.index', ['staffs' => $data]);
+    }
+
+    public function admin_index()
+    {
+        if (Auth::check()) {
             if (Auth::user()->ismember == '0') {
                 $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
                 return view('admin.layouts.staffs.index', ['staffs' => $data]);
+            } else {
+                return redirect()->route('index')->with('alert', '請登入管理者帳號!');
             }
-            else{
-                $data = DB::table('images')->join('staffs', 'staffs.id', '=', 'ter_id')->get();
-                return view('staffs.index', ['staffs' => $data]);
-            }
-        }
-        else{
-            $data = DB::table('staffs')->get();
-            return view('staffs.index', ['staffs' => $data]);
+        } else {
+            return redirect()->route('index')->with('alert', '請登入管理者帳號!');
         }
     }
-
-
 
     /**
      * Show the form for creating a new resource.

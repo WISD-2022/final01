@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reserve;
 use App\Http\Requests\StoreReserveRequest;
 use App\Http\Requests\UpdateReserveRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Classes;
 use App\Models\Staffs;
@@ -18,20 +19,30 @@ class ReserveController extends Controller
      */
     public function index()
     {
-
+        if (Auth::check()){
         $data = DB::table('reserves')->get();
         return view('reserve.index',['reserves' => $data]);
+        }
     }
 
     public function admin_index()
     {
-        $data = DB::table('reserves')
-            ->join('staffs','staffs.id','=','ter_id')
-            ->join('classes','classes.id','=','class_id')
-            ->join('users','users.id','=','user_id')
-            ->get();
-        $data2 = DB::table('reserves')->get();
-        return view('admin.layouts.reserve.index',['reserves'=>$data,'reserves_id'=>$data2]);
+        if (Auth::check()) {
+            if (Auth::user()->ismember == '0') {
+                $data = DB::table('reserves')
+                    ->join('staffs','staffs.id','=','ter_id')
+                    ->join('classes','classes.id','=','class_id')
+                    ->join('users','users.id','=','user_id')
+                    ->get();
+                $data2 = DB::table('reserves')->get();
+                return view('admin.layouts.reserve.index',['reserves'=>$data,'reserves_id'=>$data2]);
+            } else {
+                return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+            }
+        } else {
+            return redirect()->route('index')->with('alert', '請登入管理者帳號!');
+        }
+
     }
 
     /**
