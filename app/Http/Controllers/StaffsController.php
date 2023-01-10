@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staffs;
+use App\Models\Image;
 use App\Http\Requests\StoreStaffsRequest;
 use App\Http\Requests\UpdateStaffsRequest;
 use Illuminate\Support\Facades\DB;
@@ -49,18 +50,18 @@ class StaffsController extends Controller
             'introduce'=>$request->introduce,
             'img_path'=> $request->image,
         ]);
-//        if($request->has('image')) {
-//            //影像圖檔-自訂檔案名稱
-//            $imageName = $request->id.'_'.time().'.'.$request->image->extension();
-//            //把檔案存到公開的資料夾
-//            $file_path = $request->image->move(public_path('images'), $imageName);
-//            Image::create([
-//                'image'=>$imageName,
-//                'ter_id'=>$request->id,
-//            ]);
-//        Staffs::create([
-//            'img_path'=> $file_path,
-//        ]);}
+       if($request->has('image')) {
+            //影像圖檔-自訂檔案名稱
+            $imageName = $request->id.'_'.time().'.'.$request->image->extension();
+            //把檔案存到公開的資料夾
+           $file_path = $request->image->move(public_path('images'), $imageName);
+            Image::create([
+                'image'=>$imageName,
+                'ter_id'=>$request->id,
+            ]);
+        Staffs::create([
+            'img_path'=> $file_path,
+        ]);}
         return redirect()->route('admin.staffs.index');
     }
 
