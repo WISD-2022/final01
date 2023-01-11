@@ -46,16 +46,22 @@
 ★ 前台
 - 查看美甲老師 Route::get('staffs',[StaffsController::class,'index'])->name('staffs.index'); [3A932003 徐千素](https://github.com/3a932003)
 - 查看課程 Route::get('classes',[ClassesController::class,'index'])->name('classes.index'); [3A932003 徐千素](https://github.com/3a932003)
-- 會員預約 Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create'); [3A932045 曾翊晴](https://github.com/3A932045)
+- 會員預約 Route::get('classes/{class}/reserves/create',[ClassesReserveController::class,'create'])->name('classes.reserves.create'); [3A932117 黃佳怡](https://github.com/3A932117)
+- 預約紀錄 Route::get('reserves',[ClassesReserveController::class,'index'])->name('reserve'); [3A932003 徐千素](https://github.com/3a932003)
 
 ★ 後台
 - 美甲老師管理 Route::get('staffs', [StaffsController::class, 'admin_index'])->name("staffs.index"); [3A932117 黃佳怡](https://github.com/3A932117)
+- 上傳圖片功能 Route::get('staffs/create', [StaffsController::class, 'create'])->name("staffs.create"); [3A932045 曾翊晴](https://github.com/3A932045)
 - 課程管理 Route::get('classes', [ClassesController::class, 'admin_index'])->name("classes.index"); [3A932045 曾翊晴](https://github.com/3A932045)
 - 排班管理 Route::get('schedules', [ScheduleController::class, 'index'])->name("schedules.index"); [3A932117 黃佳怡](https://github.com/3A932117)
 - 查看會員預約 Route::get('reserves',[ReserveController::class,'admin_index'])->name('reserves.index'); [3A932045 曾翊晴](https://github.com/3A932045)
 - 查看會員資料 Route::get('customers',[UserController::class,'index'])->name('customers.index'); [3A932117 黃佳怡](https://github.com/3A932117)
 
-★ 各項功能完善 & 身分驗證 [3A932045 曾翊晴](https://github.com/3A932045)
+★ 各項功能完善 [3A932045 曾翊晴](https://github.com/3A932045)
+
+★ 身分驗證 [3A932045 曾翊晴](https://github.com/3A932045)
+
+★ Model關聯 [3A932045 曾翊晴](https://github.com/3A932045)
 
 ## ERD
 <a href="https://imgur.com/5Ig4PwO"/><img src="https://imgur.com/5Ig4PwO.png" title="source: imgur.com" /></a>
