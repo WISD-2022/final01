@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->ismember == '0') {
-                $data = DB::table('users')->get();
+                $data = DB::table('users')->where('ismember','1')->get();
                 return view('admin.layouts.customers.index',['customers' => $data]);
             } else {
                 return redirect()->route('index')->with('alert', '請登入管理者帳號!');
